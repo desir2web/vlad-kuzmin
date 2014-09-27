@@ -1,10 +1,10 @@
 <section class="section section_news js-section" data-frame="news">
 	<div class="container js-container js-newsView">
 		<div class="news js-news">
-			{{! News }}
+
 			<div class="news__frame js-newsFrame">
 				<div class="news__container js-newsContainer js-scroll">
-					{{! Page 1 }}
+
 					<ul class="news__list js-newsPage">
 						{{#news}}
 							<li class="news__item{{#red}} red{{/red}}">
@@ -33,16 +33,14 @@
 				</div>
 			</div>
 		</div>
-		{{! Archive }}
+
 		<div class="btn btn_bottom js-showNewsArchiveBtn" data-url="<?php bloginfo('template_url'); ?>/json/newsArchive.json">
-			{{! <div class="sprite icon icon-play"></div> }}
 			<span class="btn__text">
 				Архив
 			</span>
 		</div>
 	</div>
 
-	{{! News item template }}
 	<script type="text/mustache" id="newsItemTemplate" data-url="<?php bloginfo('template_url'); ?>/json/news.json">
 		<div class="news__date">
 			{{{important1}}}
@@ -67,9 +65,8 @@
 		</table>
 	</script>
 
-	{{! News archive item template }}
 	<script type="text/mustache" id="newsArchiveItemTemplate">
-		<a href="{{link}}" class="news__link js-newsArchiveBtn">
+		<a href="<?php bloginfo('template_url'); ?>/{{link}}" class="news__link js-newsArchiveBtn">
 			<span class="news__date">
 				<svg viewBox="0 0 80 114" class="icon icon-news-date">
 					<use xlink:href="#news-date"></use>
