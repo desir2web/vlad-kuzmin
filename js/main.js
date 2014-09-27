@@ -624,7 +624,9 @@ $(function() {
     App.Views.Gallery = Backbone.View.extend({
         el: '.js-gallery',
         initialize: function() {
-            this.render();
+            this.collection.on('reset', function() {
+                this.render();
+            }, this);
         },
         render: function() {
             this.collection.each(function(galleryItem) {
@@ -772,75 +774,25 @@ $(function() {
      *
      ******************/
 
-    var galleryData = [{
-        "thumb": "img/photo-1.jpg",
-        "img": "img/photo-1.jpg"
-    }, {
-        "thumb": "img/photo-1.jpg",
-        "img": "img/photo-1.jpg"
-    }, {
-        "thumb": "img/photo-1.jpg",
-        "img": "img/photo-1.jpg"
-    }, {
-        "thumb": "img/photo-1.jpg",
-        "img": "img/photo-1.jpg"
-    }, {
-        "thumb": "img/photo-1.jpg",
-        "img": "img/photo-1.jpg"
-    }, {
-        "thumb": "img/photo-1.jpg",
-        "img": "img/photo-1.jpg"
-    }, {
-        "thumb": "img/photo-1.jpg",
-        "img": "img/photo-1.jpg"
-    }, {
-        "thumb": "img/photo-1.jpg",
-        "img": "img/photo-1.jpg"
-    }, {
-        "thumb": "img/photo-1.jpg",
-        "img": "img/photo-1.jpg"
-    }, {
-        "thumb": "img/photo-1.jpg",
-        "img": "img/photo-1.jpg"
-    }, {
-        "thumb": "img/photo-1.jpg",
-        "img": "img/photo-1.jpg"
-    }, {
-        "thumb": "img/photo-1.jpg",
-        "img": "img/photo-1.jpg"
-    }, {
-        "thumb": "img/photo-1.jpg",
-        "img": "img/photo-1.jpg"
-    }, {
-        "thumb": "img/photo-1.jpg",
-        "img": "img/photo-1.jpg"
-    }, {
-        "thumb": "img/photo-1.jpg",
-        "img": "img/photo-1.jpg"
-    }, {
-        "thumb": "img/photo-1.jpg",
-        "img": "img/photo-1.jpg"
-    }, {
-        "thumb": "img/photo-1.jpg",
-        "img": "img/photo-1.jpg"
-    }, {
-        "thumb": "img/photo-1.jpg",
-        "img": "img/photo-1.jpg"
-    }, {
-        "thumb": "img/photo-1.jpg",
-        "img": "img/photo-1.jpg"
-    }, {
-        "thumb": "img/photo-1.jpg",
-        "img": "img/photo-1.jpg"
-    }, {
-        "thumb": "img/photo-1.jpg",
-        "img": "img/photo-1.jpg"
-    }, {
-        "thumb": "img/photo-1.jpg",
-        "img": "img/photo-1.jpg"
-    }];
+    App.Collections.Gallery = Backbone.Collection.extend({
+        url: $('#galleryItemTemplate').data('url'),
+        parse: function(response) {
+            var attachments = response.page.attachments,
+                galleryItems = _.map(attachments, function(item) {
+                    return {
+                        thumb: item.images.medium.url,
+                        img: item.images.full.url
+                    };
+                });
+            return galleryItems;
 
-    App.Collections.Gallery = Backbone.Collection.extend({});
+        },
+        initialize: function() {
+            this.fetch({
+                reset: true
+            });
+        }
+    });
     App.Collections.NewsArchive = Backbone.Collection.extend({
         parse: function(response) {
             return _.map(response.permalinks, function(item) {
@@ -872,7 +824,7 @@ $(function() {
      *
      ******************/
 
-    var galleryCollection = new App.Collections.Gallery(galleryData),
+    var galleryCollection = new App.Collections.Gallery(),
         newsArchiveCollection = new App.Collections.NewsArchive(),
         newsCollection = new App.Collections.News();
 
