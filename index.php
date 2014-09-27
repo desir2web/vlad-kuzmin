@@ -21,7 +21,7 @@
 	<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/pace-theme-minimal.css">
 	<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/perfect-scrollbar.min.css">
 	<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/colorbox.css">
-	<link rel="stylesheet" href="http://fatuk.github.io/vlad-kuzmin/css/main.css">
+	<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/main.css">
 	<!--[if lt IE 9]>
 	  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 	  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
