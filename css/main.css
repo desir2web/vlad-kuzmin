@@ -3416,6 +3416,12 @@ body {
 .news__item:nth-last-child(2) {
   margin-bottom: 0;
 }
+.news__item:nth-child(1) {
+  margin-bottom: 50px;
+}
+.news__item:nth-child(2) {
+  margin-bottom: 50px;
+}
 .news__item_archive {
   width: 80px;
   margin-right: 80px;

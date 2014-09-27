@@ -511,7 +511,7 @@ $(function() {
             });
         },
         showArchive: function(e) {
-            var url = $(e.currentTarget).data('url');
+            var url = $(e.currentTarget).data('url') + '?json=get_date_index';
             this.collection.url = url;
             this.collection.fetch({
                 reset: true
@@ -848,14 +848,13 @@ $(function() {
                     date: moment(item.split('=')[1], 'YYYYMM').format('YYYY-MM'),
                     year: moment(item.split('=')[1], 'YYYYMM').format('YYYY'),
                     month: moment(item.split('=')[1], 'YYYYMM').format('MMMM'),
-                    // link: 'wp/?json=get_date_posts&date=' + moment(item.split('=')[1], 'YYYYMM').format('YYYY-MM')
-                    link: 'json/news2.json'
+                    link: '?json=get_date_posts&date=' + moment(item.split('=')[1], 'YYYYMM').format('YYYY-MM')
                 };
             });
         },
     });
     App.Collections.News = Backbone.Collection.extend({
-        url: $('#newsItemTemplate').data('url'),
+        url: $('#newsItemTemplate').data('url') + '/?json=get_posts',
         parse: function(response) {
             return response.posts;
         },

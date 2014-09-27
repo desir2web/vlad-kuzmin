@@ -34,18 +34,18 @@
 			</div>
 		</div>
 
-		<div class="btn btn_bottom js-showNewsArchiveBtn" data-url="<?php bloginfo('template_url'); ?>/json/newsArchive.json">
+		<div class="btn btn_bottom js-showNewsArchiveBtn" data-url="<?php bloginfo('wpurl'); ?>">
 			<span class="btn__text">
 				Архив
 			</span>
 		</div>
 	</div>
 
-	<script type="text/mustache" id="newsItemTemplate" data-url="<?php bloginfo('template_url'); ?>/json/news.json">
+	<script type="text/mustache" id="newsItemTemplate" data-url="<?php bloginfo('wpurl'); ?>">
 		<div class="news__date">
-			{{{important1}}}
+			{{#important}}
 				<img src="<?php bloginfo('template_url'); ?>/img/red-date.svg" alt="" class="news__red-date">
-			{{{important2}}}
+			{{/important}}
 			<svg viewBox="0 0 80 114" class="icon icon-news-date">
 				<use xlink:href="#news-date"></use>
 			</svg>
@@ -66,7 +66,7 @@
 	</script>
 
 	<script type="text/mustache" id="newsArchiveItemTemplate">
-		<a href="<?php bloginfo('template_url'); ?>/{{link}}" class="news__link js-newsArchiveBtn">
+		<a href="{{link}}" class="news__link js-newsArchiveBtn">
 			<span class="news__date">
 				<svg viewBox="0 0 80 114" class="icon icon-news-date">
 					<use xlink:href="#news-date"></use>
