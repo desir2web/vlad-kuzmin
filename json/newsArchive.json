@@ -1,0 +1,22 @@
+{
+    "status": "ok",
+    "permalinks": [
+        "http:\/\/localhost\/wp\/?m=201409",
+        "http:\/\/localhost\/wp\/?m=201408",
+        "http:\/\/localhost\/wp\/?m=201407",
+        "http:\/\/localhost\/wp\/?m=201406",
+        "http:\/\/localhost\/wp\/?m=201405",
+        "http:\/\/localhost\/wp\/?m=201404",
+        "http:\/\/localhost\/wp\/?m=201403",
+        "http:\/\/localhost\/wp\/?m=201403",
+        "http:\/\/localhost\/wp\/?m=201403",
+        "http:\/\/localhost\/wp\/?m=201303",
+        "http:\/\/localhost\/wp\/?m=201210",
+        "http:\/\/localhost\/wp\/?m=201012"
+    ],
+    "tree": {
+        "2014": {
+            "09": "1"
+        }
+    }
+}

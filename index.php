@@ -1,362 +1,103 @@
-<?php get_header(); ?>
-            
-            <div class="row-fluid welcome" id="welcome">
-                <div class="tablecell">
-                    <div class="container">
-                        <div class="span1">
-                            <div class="logo"><svg viewBox="0 0 60 114" class="logo"><use xlink:href="#logo"></use></svg></div>
-                        </div>
-                        <div class="span5">
-                            <div class="siteinfo">
-                                <span class="name"><?php bloginfo( 'name' ); ?></span>
-                                <h1 class="description"><?php bloginfo( 'description' ); ?></h1>
-                            </div>
-                        </div>
-                        <div class="span4 offset2">
-                            <div class="important">
-                                <?php
-                                    $posts = get_posts("category=1&numberposts=1");
-                                    if ($posts) :
-                                    foreach ($posts as $post) : setup_postdata ($post);
-                                    $permalink = get_permalink( $id );
-                                ?>
-                                <a href="<?php echo $permalink; ?>">
-                                    <?php the_title(); ?>
-                                </a>
-                                <?php
-                                    endforeach;
-                                    endif;
-                                ?>
-                            </div> 
-                        </div>
-                    </div> 
-                    <div class="container">
-                        <div class="span7 offset1">
-                            <div class="productioninfo clearfix">
-                                <div class="item">
-                                    <span class="number">5000</span>
-                                    <span class="info">м<sup>2</sup> площадь производства</span>
-                                </div>
-                                <div class="item">
-                                    <span class="number">500</span>
-                                    <span class="info">м<sup>3</sup> древесины в&nbsp;месяц</span>
-                                </div>
-                                <div class="item">
-                                    <span class="number">40</span>
-                                    <span class="info">высококлассных специалистов</span>
-                                </div>
-                                <div class="item">
-                                    <span class="number">30</span>
-                                    <span class="info">единиц оборудования</span>
-                                </div>
-                                <div class="item">
-                                    <span class="number">6</span>
-                                    <span class="info">лет<br>на рынке</span>
-                                </div>
-                                <div class="item">
-                                    <span class="number">5</span>
-                                    <span class="info">производственных корпусов</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="span4 offset1">
-                            <a href="#" class="btn btn-main show-popup">Оформить заявку</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="row-fluid characteristics">
-                <div class="container">
-                    <div class="span12">
-                        <h2 class="caption">Производственные характеристики</h2>
-                    </div>
-                </div>
-                <div class="items">
-                    <div class="container">
-                        <div class="span3">
-                            <div class="item">
-                                <svg viewBox="0 0 60 60" class="icons icons-size-60"><use xlink:href="#icon-01"></use></svg>
-                                <span class="info">Итальянское оборудование</span>
-                            </div>
-                        </div>
-                        <div class="span3 offset1">
-                            <div class="item">
-                                <svg viewBox="0 0 60 60" class="icons icons-size-60"><use xlink:href="#icon-02"></use></svg>
-                                <span class="info">Собственная <nobr>ж/д</nobr>&nbsp;ветка</span>
-                            </div>
-                        </div>
-                        <div class="span2 offset1">
-                            <div class="item">
-                                <svg viewBox="0 0 60 60" class="icons icons-size-60"><use xlink:href="#icon-03"></use></svg>
-                                <span class="info">Башенный кран</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="span3">
-                            <div class="item">
-                                <svg viewBox="0 0 60 60" class="icons icons-size-60"><use xlink:href="#icon-04"></use></svg>
-                                <span class="info">Фумигационная обработка</span>
-                            </div>
-                        </div>
-                        <div class="span3 offset1">
-                            <div class="item">
-                                <svg viewBox="0 0 60 60" class="icons icons-size-60"><use xlink:href="#icon-05"></use></svg>
-                                <span class="info">Доставка по России&nbsp;и&nbsp;СНГ</span>
-                            </div>
-                        </div>
-                        <div class="span4 offset1">
-                            <div class="item">
-                                <svg viewBox="0 0 60 60" class="icons icons-size-60"><use xlink:href="#icon-06"></use></svg>
-                                <span class="info">Готовность работать<br> в&nbsp;3&nbsp;смены</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> 
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>
+    <?php
+        global $page, $paged;
 
-            <div class="row-fluid products" id="production">
-                        
-                    <div id="products" class="owl-carousel">
-                        
-                    <?php
-                        $posts = get_posts("category=4");
-                        if ($posts) :
-                        foreach ($posts as $post) : setup_postdata ($post);
-                        $thumbnail = '';
-                            if ( has_post_thumbnail( $post->ID ) ) {
-                            $thumbnail = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ));
-                        }
-                        $permalink = get_permalink( $id );
-                    ?>
+        wp_title( '|', true, 'right' );
+        bloginfo( 'name' );
 
-                        <div class="item">
-                            <div class="bg-image" style="background: url(<?php echo $thumbnail; ?>) center center no-repeat;">
-                                <div class="overlay">
-                                    <div class="tablecell">
-                                        <div class="container">
-                                            <div class="span8 offset2">
-                                                <a href="<?php echo $permalink; ?>"><h2 class="caption"><?php the_title(); ?></h2></a>
-                                                <div class="info">
-                                                    <?php the_content(''); ?>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        $site_description = get_bloginfo( 'description', 'display' );
+        if ( $site_description && ( is_home() || is_front_page() ) )
+            echo " | $site_description";
+        if ( $paged >= 2 || $page >= 2 )
+            echo ' | ' . sprintf( __( 'Page %s', 'twentyten' ), max( $paged, $page ) );
+    ?>
+    </title>
+	<script data-pace-options='{ "ajax": true, "document": true, "elements": ["img"] }' src="<?php bloginfo('template_url'); ?>/js/pace.min.js"></script>
+	<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/pace-theme-minimal.css">
+	<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/perfect-scrollbar.min.css">
+	<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/colorbox.css">
+	<link rel="stylesheet" href="http://fatuk.github.io/vlad-kuzmin/css/main.css">
+	<!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<div class="loading-fade js-loadingFade" id="loadingFade">
+		<ul class="loading-fade__list">
+			<li class="loading-fade__item loading-fade__item_up js-loadingItem js-loadingItemLogo"></li>
+			<li class="loading-fade__item loading-fade__item_down js-loadingItem"></li>
+		</ul>
+	</div>
+	<script>
+		Pace.on('done', function() {
+			var $loadingFade = $('#loadingFade');
 
-                    <?php
-                        endforeach;
-                        endif;
-                    ?>
+			$loadingFade.addClass('animated myFadeOut');
 
-                    </div>
-                    <div class="viewall">
-                        <a href="<?php $permalink = get_category_link("4"); echo esc_url( $permalink ); ?>">Смотреть всю продукцию</a>
-                    </div>
-			</div>
-            
-            <div class="row-fluid structure" id="structure">
-                <div class="container">
-                    <div class="span8 offset2">
-                        <h2 class="caption">Предприятие включает в себя все необходимые службы и&nbsp;участки для эффективной работы:</h2>
-                    </div>
-                </div>
-                <div class="items">
-                    <div class="container">
-                        <div class="span4">
-                            <div class="item">
-                                <svg viewBox="0 0 60 60" class="icons icons-size-100"><use xlink:href="#icon-07"></use></svg>
-                                <span class="info">Распилочный<br>цех</span>
-                            </div>
-                        </div>
-                        <div class="span4">
-                            <div class="item">
-                                <svg viewBox="0 0 60 60" class="icons icons-size-100"><use xlink:href="#icon-08"></use></svg>
-                                <span class="info">Заготовительный<br>участок</span>
-                            </div>
-                        </div>
-                        <div class="span4">
-                            <div class="item">
-                                <svg viewBox="0 0 60 60" class="icons icons-size-100"><use xlink:href="#icon-09"></use></svg>
-                                <span class="info">Сборочный<br>участок</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="span4">
-                            <div class="item">
-                                <svg viewBox="0 0 60 60" class="icons icons-size-100"><use xlink:href="#icon-10"></use></svg>
-                                <span class="info">Участок сушки<br>древесины</span>
-                            </div>
-                        </div>
-                        <div class="span4">
-                            <div class="item">
-                                <svg viewBox="0 0 60 60" class="icons icons-size-100"><use xlink:href="#icon-11"></use></svg>
-                                <span class="info">Малярный<br>участок</span>
-                            </div>
-                        </div>
-                        <div class="span4">
-                            <div class="item">
-                                <svg viewBox="0 0 60 60" class="icons icons-size-100"><use xlink:href="#icon-12"></use></svg>
-                                <span class="info">Ремонтно-механический<br>участок</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="span4 offset4">
-                        <a href="#" class="btn btn-main show-popup">Оформить заявку</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="row-fluid garancy" id="garancy">
-                <div class="container">
-                    <div class="span8 offset2">
-                        <h2 class="caption">Мы гарантируем высокий уровень качества и&nbsp;индивидуальный подход с&nbsp;учётом ваших требований и&nbsp;пожеланий</h2>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="row-fluid benefits">
-                <div class="overlay">
-                    <div class="items">
-                        <div class="container">
-                            <div class="span4">
-                                <div class="item">
-                                    <svg viewBox="0 0 60 60" class="icons icons-size-100"><use xlink:href="#icon-13"></use></svg>
-                                    <span class="info">Чёткие сроки</span>
-                                </div>
-                            </div>
-                            <div class="span4">
-                                <div class="item">
-                                    <svg viewBox="0 0 60 60" class="icons icons-size-100"><use xlink:href="#icon-14"></use></svg>
-                                    <span class="info">Проверенные технологии&nbsp;и&nbsp;материалы</span>
-                                </div>
-                            </div>
-                            <div class="span4">
-                                <div class="item">
-                                    <svg viewBox="0 0 60 60" class="icons icons-size-100"><use xlink:href="#icon-15"></use></svg>
-                                    <span class="info">Высокое качество</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="row-fluid devices">
-                <div class="container">
-                    <div class="span10 offset1">
-                        <h2 class="caption">Наше предприятие всегда использует весь накопленный опыт и&nbsp;потенциал для решения задач, поставленных нашими клиентами, а&nbsp;помогает нам в&nbsp;этом наше надежное оборудование:</h2>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="span3">
-                        <ul>
-                            <li>Станок однопильный</li>
-                            <li>Рейсмусовые станки</li>
-                            <li>Пилы маятниковые</li>
-                            <li>Пилорама 2Р75-1</li>
-                            <li>Заточные станки</li>
-                            <li>Горячий пресс</li>
-                        </ul>
-                    </div>
-                    <div class="span3">
-                        <ul>
-                            <li>Торцовочные станки</li>
-                            <li>Фуговальные станки</li>
-                            <li>Пятипильный станок</li>
-                            <li>Станок двухпильный</li>
-                            <li>Сверлильные станки</li>
-                            <li>Фрезерные станки</li>
-                        </ul>
-                    </div>
-                    <div class="span6">
-                        <ul>
-                            <li>Четырёхсторонний строгально-калёвочный станок</li>
-                            <li>Круглопильный станок с кареткой 3200мм</li>
-                            <li>Станок десятипильный прорезной</li>
-                            <li>Цепно-долбёжные станки</li>
-                            <li>Ленточнопильные станки</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="row-fluid callback">
-                <div class="container">
-                    <div class="span12">
-                        <h2 class="caption">Мы всегда открыты для&nbsp;взаимовыгодного сотрудничества</h2>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="span8 offset2">
-                        <span class="info">
-                            Обратитесь в ООО «Прометей»<br>и мы сделаем Вам конкурентоспособное предложение
-                        </span>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="span4 offset4">
-                        <a href="#" class="btn btn-main show-popup">Оформить заявку</a>
-                    </div>
-                </div>
-            </div>
+			var openSite = function() {
+				$loadingFade.find('.js-loadingItem').eq(0).css({
+					'transform': 'translate3d(0,-100%,0)',
+					'-webkit-transform': 'translate3d(0,-100%,0)'
+				});
+				$loadingFade.find('.js-loadingItem').eq(1).css({
+					'transform': 'translate3d(0,100%,0)',
+					'-webkit-transform': 'translate3d(0,100%,0)'
+				});
+			};
 
-            <div class="row-fluid news-more-about" id="news">
-                <div class="news">
-                    <div class="container">
-                        <div class="span12">
-                            <h2 class="caption">Новости</h2><a href="<?php $permalink = get_category_link("3"); echo esc_url( $permalink ); ?>" class="viewall">Все новости</a>
-                        </div>
-                    </div>
-                    <div class="container">
-                        <?php
-                            $posts = get_posts("category=3&numberposts=4");
-                            if ($posts) :
-                            foreach ($posts as $post) : setup_postdata ($post);
-                            $permalink = get_permalink( $id );
-                            
-                            $categories = get_the_category();
-                            $separator = ' ';
-                            $output = '';
-                            if($categories){
-                                foreach($categories as $category) {
-                                    $output .= $category->slug.$separator;
-                                }
-                            }
-                        ?>
-                        <div class="item">
-                            <div class="span3">
-                                <h3 class="caption"><a href="<?php echo $permalink; ?>" class="<?php echo trim($output, $separator); ?>"><?php the_title(); ?></a></h3><span class="date"><?php echo get_the_date(); ?></span>
-                            </div>
-                        </div>
-                        <?php
-                            endforeach;
-                            endif;
-                        ?>
-                    </div>
-                </div>
+			setTimeout(function() {
+				$('.js-loadingItemLogo').append('<img src="<?php bloginfo('template_url'); ?>/img/logo_animation.gif" alt="Влад Кузьмин" class="loading-fade__logo">');
+			}, 1000);
 
-                <?php if ( is_active_sidebar( 'more_menu' ) ) : ?>
-                <?php dynamic_sidebar( 'more_menu' ); ?>
-                <?php endif; ?>
 
-                <?php if ( is_active_sidebar( 'about' ) ) : ?>
-                <?php dynamic_sidebar( 'about' ); ?>
-                <?php endif; ?>
+			setTimeout(function() {
+				$('.pace-inactive').addClass('animated progressFadeOut');
+				openSite();
+			}, 4700);
 
-            </div>
-            
-            <div class="row-fluid map" id="contacts">
-                <script type="text/javascript" charset="utf-8" src="http://api-maps.yandex.ru/services/constructor/1.0/js/?sid=1UwXg13yU729A0-elRCuqScR46Jc0dtH"></script>
-            </div>
-            
-<?php get_footer(); ?>
+
+		});
+	</script>
+	<div class="hide">
+		<?php include "partials/svg-icons.php"; ?>
+		<a href="http://findfood.ru/attaches/product/ovoshi/pomidor.jpg" class="gallery__link" rel="test">
+			<span class="gallery__icon">
+				<div class="sprite icon icon-zoom-in"></div>
+			</span>
+			<div class="gallery__img" style="background: url(img/photo-1.jpg) 50% center no-repeat; background-size: cover;"></div>
+		</a>
+		<a href="<?php bloginfo('template_url'); ?>/img/photo-1.jpg" class="gallery__link" rel="test">
+			<span class="gallery__icon">
+				<div class="sprite icon icon-zoom-in"></div>
+			</span>
+			<div class="gallery__img" style="background: url<?php bloginfo('template_url'); ?>/(img/photo-1.jpg) 50% center no-repeat; background-size: cover;"></div>
+		</a>
+	</div>
+	<div class="wrapper js-frame">
+		<?php include "partials/header.php"; ?>
+		<?php include "partials/arrows.php"; ?>
+		<main class="main-content js-framesContainer">
+			<div class="color-overlay js-colorOverlay"></div>
+			<?php include "partials/home.php"; ?>
+			<?php include "partials/resume.php"; ?>
+			<?php include "partials/show.php"; ?>
+			<?php include "partials/school.php"; ?>
+			<?php include "partials/gallery.php"; ?>
+			<?php include "partials/news.php"; ?>
+			<?php include "partials/contacts.php"; ?>
+		</main>
+		<?php include "partials/footer.php"; ?>
+	</div>
+	<?php include "partials/video-slider.php"; ?>
+	<?php include "partials/photo-slider.php"; ?>
+	<script src="<?php bloginfo('template_url'); ?>/vendors/plugins.min.js"></script>
+	<!-- script src="http://fatuk.github.io/vlad-kuzmin/js/main.js"></script -->
+    <script src="<?php bloginfo('template_url'); ?>/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+    "img": "{{{img}}}",
+    "thumb": "{{thumb}}",
+    "important1": "{{#important}}",
+    "important2": "{{/important}}",
+    "dayNumber": "{{dayNumber}}",
+    "month": "{{month}}",
+    "title_plain": "{{title_plain}}",
+    "link": "{{link}}",
+    "year": "{{year}}",
+    "link": "{{link}}"
+}
