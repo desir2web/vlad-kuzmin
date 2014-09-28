@@ -30,7 +30,7 @@
 
 				</ul>
 			</div>
-			<div class="tabs__content wow bounceInDown" data-wow-delay="0.6s">
+			<div class="tabs__content wow bounceInDown" data-wow-delay="<?php echo count($posts) * 0.3 ?>s">
 				<ul class="tabs__content-list">
 
                     <?php
