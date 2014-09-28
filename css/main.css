@@ -3333,6 +3333,9 @@ textarea:focus {
 .contacts__phone-text [href*="tel:"] {
   text-decoration: none;
 }
+.contacts__phone-text .textwidget {
+  display: inline-block;
+}
 .contacts__aim {
   float: left;
   position: relative;
