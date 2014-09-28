@@ -46,4 +46,14 @@
 			</table>
 		</div>
 	</div>
+	<!-- Show photos -->
+	<div class="js-galleryPopupData hide">
+		<?php
+			$page_id = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_name = 'show-photo'");
+			$page_data = get_page( $page_id );
+
+			$content = $page_data->post_content;
+		?>
+		<?php echo apply_filters( 'the_content', $content ); ?>
+	</div>
 </section>

@@ -177,6 +177,9 @@ $(function() {
                 // self.$('.js-framesContainer').prepend('<div class="color-overlay js-colorOverlay"></div>');
             }, 3000);
 
+            // Group show photos
+            this.$('.js-galleryPopupData').find('a').attr('rel', 'show-photos');
+
         },
         setRoute: function(id) {
             router.navigate(App.Routes[id].route, {
@@ -381,7 +384,7 @@ $(function() {
             this.$('.js-videoSlider').fadeIn('fast');
         },
         showPhotoSlider: function() {
-            this.$('.js-photoSlider').fadeIn('fast');
+            this.$('.js-galleryPopupData a').eq(0).trigger('click');
         }
     });
 
@@ -642,19 +645,19 @@ $(function() {
                 wheelSpeed: 40
             });
 
-            this.$('.js-galleryPopup').colorbox({
+            appView.$('.js-galleryPopup, .js-galleryPopupData a').colorbox({
                 maxWidth: '70%',
                 maxHeight: '70%',
                 className: 'colorbox-overlay',
                 closeButton: false,
                 transition: 'elastic',
                 onOpen: function() {
-                    var closeTpl = '<div class="close-popup js-closeBtn"><div class="sprite icon icon-close"></div></div>',
+                    var closeTpl = '<div class="close-popup js-colorboxCloseBtn"><div class="sprite icon icon-close"></div></div>',
                         leftArrow = '<div class="arrow arrow_left arrow_always js-colorboxArrowLeft"><svg viewBox="0 0 64.347 127.279" class="icon icon-slida-arrow-left"><use xlink:href="#slide-arrow-left"></use></svg></div>',
                         rightArrow = '<div class="arrow arrow_right arrow_always js-colorboxArrowRight"><svg viewBox="0 0 64.347 127.279" class="icon icon-slida-arrow-right"><use xlink:href="#slide-arrow-right"></use></svg></div>';
                     $('body').append(closeTpl + leftArrow + rightArrow);
                     // close
-                    $('body').on('click', '.js-closeBtn', function() {
+                    $('body').on('click', '.js-colorboxCloseBtn', function() {
                         $.colorbox.close();
                         $(this).remove();
                     });
@@ -670,7 +673,7 @@ $(function() {
                     $('body').off('keyup');
                 },
                 onCleanup: function() {
-                    $('.js-closeBtn, .js-colorboxArrowLeft, .js-colorboxArrowRight').remove();
+                    $('.js-colorboxCloseBtn, .js-colorboxArrowLeft, .js-colorboxArrowRight').remove();
                     $('body').on('keyup', function(e) {
                         appView.arrowSlide(e);
                     });
