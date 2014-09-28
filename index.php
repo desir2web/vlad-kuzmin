@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru"<?php if (is_user_logged_in()) { echo ' class="js-isAdmin"';} ?>>
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -26,7 +26,7 @@
 	  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 	  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 	<![endif]-->
-    
+
 <?php wp_head(); ?>
 </head>
 <body>
@@ -101,7 +101,7 @@
 	<script src="<?php bloginfo('template_url'); ?>/vendors/plugins.min.js"></script>
 	<!-- script src="http://fatuk.github.io/vlad-kuzmin/js/main.js"></script -->
     <script src="<?php bloginfo('template_url'); ?>/js/main.js"></script>
-    
+
 <?php wp_footer(); ?>
 </body>
 </html>

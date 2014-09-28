@@ -67,6 +67,13 @@ $(function() {
         headerHeight: 0,
         footerHeight: 0,
         animationSpeed: 500,
+        isAdmin: function() {
+            if ($('html.js-isAdmin').length > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        },
         renderRecentNews: function(e) {
             var $currentTarget = $(e.currentTarget);
 
@@ -134,8 +141,8 @@ $(function() {
                 });
             });
             this.$('.js-container').css({
-                'height': this.frameHeight - this.headerHeight - 30 - this.footerHeight,
-                'margin-top': this.headerHeight + 30
+                'height': (this.frameHeight - this.headerHeight - 30 - this.footerHeight) - (this.isAdmin() ? 32 : 0),
+                'margin-top': (this.headerHeight + 30) + (this.isAdmin() ? 32 : 0)
             });
             this.$('.js-article').css({
                 'max-height': this.frameHeight - this.headerHeight - 30 - this.footerHeight - 100
@@ -149,12 +156,19 @@ $(function() {
             this.$('.js-galleryContainer').css({
                 'height': this.frameHeight - this.headerHeight - 30 - this.footerHeight - 30
             });
+            if (this.isAdmin()) {
+                this.$('.js-siteHeader').css({
+                    'top': 32
+                });
+            }
         },
         initialize: function() {
             var self = this;
             $(window).on('resize', function(event) {
                 self.resize(event);
             });
+
+            console.log(this.isAdmin());
 
             this.setSizes();
 
@@ -179,6 +193,9 @@ $(function() {
 
             // Group show photos
             this.$('.js-galleryPopupData').find('a').attr('rel', 'show-photos');
+
+            // Remove wp panel
+            $('html, body').attr('style', 'margin-top: 0 !important');
 
         },
         setRoute: function(id) {
