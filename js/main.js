@@ -813,11 +813,13 @@ $(function() {
     App.Collections.Gallery = Backbone.Collection.extend({
         url: $('#galleryItemTemplate').data('url'),
         parse: function(response) {
+            var galleryContent = response.page.content,
+                $galleryContent = $(galleryContent);
             var attachments = response.page.attachments,
-                galleryItems = _.map(attachments, function(item) {
+                galleryItems = _.map($galleryContent.find('a'), function(item) {
                     return {
-                        thumb: item.images.medium.url,
-                        img: item.images.full.url
+                        thumb: $(item).find('img').attr('src'),
+                        img: $(item).attr('href')
                     };
                 });
             return galleryItems;
