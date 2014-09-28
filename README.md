@@ -14,4 +14,4 @@ Data to perform:
 4. School _ Post -> category(school)
 5. Gallery -> Page -> slug(gallery) {insert gallery}
 6. News -> Post -> category(news,important)
-7. Contacts
+7. Contacts -> Widget -> Telephone(text)
