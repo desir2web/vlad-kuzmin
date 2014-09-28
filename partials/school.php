@@ -17,7 +17,7 @@
                         }
                     ?>
 
-					<li class="tabs__navigation-item wow bounceInDown">
+					<li class="tabs__navigation-item wow bounceInDown" data-wow-delay="<?php echo $key * 0.3; ?>s">
 						<a href="#tab-<?php echo $id; ?>" class="tabs__navigation-link js-tabBtn<?php if ($key == 0) {echo ' active';}?>">
 							<img src="<?php echo $thumbnail; ?>" alt="" class="tabs__navigation-img">
 						</a>
