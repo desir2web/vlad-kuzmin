@@ -8,7 +8,7 @@
 	</div>
 
 	<script type="text/mustache" id="galleryItemTemplate" data-url="<?php bloginfo('wpurl'); ?>/?json=get_page&slug=gallery">
-		<a href="{{{img}}}" class="gallery__link">
+		<a href="{{{img}}}" class="gallery__link js-galleryPopup" rel="gallery">
 			<span class="gallery__icon">
 				<div class="sprite icon icon-zoom-in"></div>
 			</span>
