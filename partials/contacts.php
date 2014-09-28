@@ -8,7 +8,9 @@
 				<div class="contacts__phone">
 					<div class="contacts__phone-text">
 						<div class="sprite icon icon-phone"></div>
-						+7 (926) 644-69-65
+						<?php if ( is_active_sidebar( 'tel' ) ) : ?>
+                            <?php dynamic_sidebar( 'tel' ); ?>
+                        <?php endif; ?>
 					</div>
 				</div>
 				<div class="contacts__aim">
@@ -20,9 +22,9 @@
 					</div>
 				</div>
 				<div class="contacts__email">
-					<a href="mailto:info@vladkuzmin.ru" class="contacts__email-text">
+					<a href="mailto:<?php $admin_email = get_site_option( 'admin_email' ); echo $admin_email; ?>" class="contacts__email-text">
 						<div class="sprite icon icon-mail"></div>
-						info@vladkuzmin.ru
+						<?php $admin_email = get_site_option( 'admin_email' ); echo $admin_email; ?>
 					</a>
 				</div>
 			</div>

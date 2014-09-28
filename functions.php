@@ -329,24 +329,18 @@ if ( function_exists( 'add_theme_support' ) ) {
 /*###########################################################################
 SHORTCODES
 ###########################################################################*/
-function ulformer( $atts, $content = null ) {
-    extract( shortcode_atts( array( 'class' => 'dropbar' ), $atts ) );
-    return '<div class="'.$class.'"><ul>'.do_shortcode($content).'</ul></div>';
+function accordion_header( $atts, $content = null ) {
+    extract( shortcode_atts( array( 'text' => 'Дополнительная информация' ), $atts ) );
+    return '<div class="accordion js-accordion"><a href="#" class="accordion__btn js-accordionBtn"><svg viewBox="0 0 18 18" class="icon icon-plus js-accordionPlus"><use xlink:href="#plus"></use></svg><svg viewBox="0 0 18 18" class="icon icon-minus js-accordionMinus"><use xlink:href="#minus"></use></svg><span class="accordion__label">'.$text.'</span></a>'.do_shortcode($content).'</div>';
 }
-add_shortcode( 'list-group', 'ulformer' );
+add_shortcode( 'accordion', 'accordion_header' );
 
-function listformer( $atts, $content = null ) {
-	extract( shortcode_atts( array( 'href' => '#', 'text' => '#' ), $atts ) );
-    return '<li><a href="'.$href.'">'.$text.'</a></li>';
+
+function accordion_content( $atts, $content = null ) {
+	extract( shortcode_atts( array( 'text' => ' ' ), $atts ) );
+    return '<div class="accordion__content js-accordionContent">'.do_shortcode($content).'</div>';
 }
-add_shortcode( 'list', 'listformer' );
-
-function iframeformer( $atts, $content = null ) {
-    extract( shortcode_atts( array( 'src' => '#' ), $atts ) );
-    return '<iframe src="'.$src.'" frameborder="0">'.$content.'</iframe>';
-}
-add_shortcode( 'iframe', 'iframeformer' );
-
+add_shortcode( 'content', 'accordion_content' );
 
 /*###########################################################################
 POST FORMAT
@@ -382,69 +376,9 @@ WIDJETS
 function twentyten_widgets_init() {
 
 	register_sidebar( array(
-		'name' => __( 'Главное меню', 'twentyten' ),
-		'id' => 'main_menu',
-		'description' => __( 'Основное меню сайта', 'twentyten' ),
-		'before_widget' => '',
-		'after_widget' => '',
-		'before_title' => '',
-		'after_title' => '',
-	) );
-
-	register_sidebar( array(
-		'name' => __( 'Телефон в шапке', 'twentyten' ),
-		'id' => 'tel_header',
-		'description' => __( 'Основной телефон', 'twentyten' ),
-		'before_widget' => '',
-		'after_widget' => '',
-		'before_title' => '',
-		'after_title' => '',
-	) );
-
-	register_sidebar( array(
-		'name' => __( 'Интересные страницы', 'twentyten' ),
-		'id' => 'more_menu',
-		'description' => __( 'Список страниц, которые возможно заинтересуют пользователя', 'twentyten' ),
-		'before_widget' => '<div class="more"><div class="container"><div class="span12">',
-		'after_widget' => '</div></div></div>',
-		'before_title' => '<h2 class="caption">',
-		'after_title' => '</h2></div></div><div class="container"><div class="span12">',
-	) );
-
-	register_sidebar( array(
-		'name' => __( 'О компании', 'twentyten' ),
-		'id' => 'about',
-		'description' => __( 'Коротко о компании', 'twentyten' ),
-		'before_widget' => '<div class="about"><div class="container"><div class="span12">',
-		'after_widget' => '</div></div></div>',
-		'before_title' => '<h2 class="caption">',
-		'after_title' => '</h2></div></div><div class="container"><div class="span8">',
-	) );
-    
-	register_sidebar( array(
-		'name' => __( 'Банковские данные', 'twentyten' ),
-		'id' => 'bankinfo',
-		'description' => __( 'Перечень банковских реквезитов', 'twentyten' ),
-		'before_widget' => '',
-		'after_widget' => '',
-		'before_title' => '',
-		'after_title' => '',
-	) );
-    
-	register_sidebar( array(
-		'name' => __( 'Адрес', 'twentyten' ),
-		'id' => 'address',
-		'description' => __( 'Адрес компании', 'twentyten' ),
-		'before_widget' => '',
-		'after_widget' => '',
-		'before_title' => '',
-		'after_title' => '',
-	) );
-    
-	register_sidebar( array(
-		'name' => __( 'Телефоны', 'twentyten' ),
+		'name' => __( 'Телефон', 'twentyten' ),
 		'id' => 'tel',
-		'description' => __( 'Телефоны компании в блоке с контактами', 'twentyten' ),
+		'description' => __( 'Для страницы "Контакты"', 'twentyten' ),
 		'before_widget' => '',
 		'after_widget' => '',
 		'before_title' => '',
