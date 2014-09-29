@@ -9,11 +9,11 @@
             ?>
             <?php echo apply_filters( 'the_content', $content ); ?>
 		</article>
-		<div class="btn btn_bottom js-showVideoSliderBtn wow bounceInUp" data-wow-delay="0.65s">
-			<div class="sprite icon icon-play"></div>
+		<a href="#" class="btn btn_bottom js-showResumeVideoSliderBtn wow bounceInUp" data-wow-delay="0.65s">
+			<span class="sprite icon icon-play"></span>
 			<span class="btn__text">
 				Демонстрационное видео
 			</span>
-		</div>
+		</a>
 	</div>
 </section>

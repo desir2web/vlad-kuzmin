@@ -6,7 +6,7 @@
 				<tbody>
 					<tr>
 						<td class="links__item wow bounceInUp" data-wow-duration="1.5s" data-wow-delay="0.4s">
-							<div class="links__item-inner">
+							<div class="links__item-inner js-showHomeVideoSliderBtn" data-id="0">
 								<div class="links__icon">
 									<div class="sprite icon icon-showreal"></div>
 								</div>
@@ -18,7 +18,7 @@
 							</div>
 						</td>
 						<td class="links__item wow bounceInUp" data-wow-duration="1.5s" data-wow-delay="0.5s">
-							<div class="links__item-inner">
+							<div class="links__item-inner js-showHomeVideoSliderBtn" data-id="1">
 								<div class="links__icon">
 									<div class="sprite icon icon-bomb"></div>
 								</div>
@@ -30,7 +30,7 @@
 							</div>
 						</td>
 						<td class="links__item wow bounceInUp" data-wow-duration="1.5s" data-wow-delay="0.6s">
-							<div class="links__item-inner">
+							<div class="links__item-inner js-showHomeVideoSliderBtn" data-id="2">
 								<div class="links__icon">
 									<div class="sprite icon icon-boot"></div>
 								</div>
@@ -45,5 +45,15 @@
 				</tbody>
 			</table>
 		</div>
+	</div>
+	<!-- Home video popup -->
+	<div class="js-showHomeVideoPopup hide">
+		<?php
+			$page_id = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_name = 'home'");
+			$page_data = get_page( $page_id );
+
+			$content = $page_data->post_content;
+		?>
+		<?php echo apply_filters( 'the_content', $content ); ?>
 	</div>
 </section>

@@ -56,6 +56,7 @@ $(function() {
             'click .js-slideArrowRight': 'nextPage',
             'click .js-showVideoSliderBtn': 'showVideoSlider',
             'click .js-showPhotoSliderBtn': 'showPhotoSlider',
+            'click .js-showHomeVideoSliderBtn': 'showHomeVideoSlider',
             'keyup': 'arrowSlide',
             'click .js-menuLink': 'setPointer',
             'click .js-recentNewsBtn': 'renderRecentNews'
@@ -192,6 +193,7 @@ $(function() {
             // Group show photos and video
             this.$('.js-showPhotoPopup').find('a').attr('rel', 'show-photos');
             this.$('.js-showVideoPopup').find('a').attr('rel', 'show-video');
+            this.$('.js-showHomeVideoPopup').find('a').attr('rel', 'home-video');
             this.$('[id^="gallery-"]').each(function(index, el) {
                 $(el).find('a').attr('rel', $(el).attr('id'));
             });
@@ -404,6 +406,10 @@ $(function() {
         },
         showPhotoSlider: function() {
             this.$('.js-showPhotoPopup a').eq(0).trigger('click');
+        },
+        showHomeVideoSlider: function(e) {
+            var id = $(e.currentTarget).data('id');
+            this.$('.js-showHomeVideoPopup a').eq(id).trigger('click');
         }
     });
 
@@ -717,7 +723,9 @@ $(function() {
             this.colorbox('.js-galleryPopup', false, '70%', '70%', '', '');
             this.colorbox('.js-showPhotoPopup a', false, '70%', '70%', '', '');
             this.colorbox('.gallery-icon a', false, '70%', '70%', '', '');
+            this.colorbox('.js-showHomeVideoPopup a', true, 768, 480, 768, 768);
             this.colorbox('.js-showVideoPopup a', true, 768, 480, 768, 768);
+            this.colorbox('.js-showResumeVideoSliderBtn', true, 768, 480, 768, 768);
         }
     });
 
