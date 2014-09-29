@@ -8,7 +8,6 @@
                         $posts = get_posts("category_name=school&orderby=ID&order=ASC");
                         if ($posts) :
                         foreach ($posts as $key => $post) : setup_postdata ($post);
-                        $index++;
                         $permalink = get_permalink( $id );
 
                         $thumbnail = '';
