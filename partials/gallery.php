@@ -2,7 +2,7 @@
 	<div class="container js-container">
 		<div class="gallery js-gallery">
 			<div class="gallery__inner js-galleryContainer js-scroll">
-				<ul class="gallery__list"></ul>
+				<ul class="gallery__list wow fadeIn" data-wow-delay="0.3s" data-wow-duration="1.2s"></ul>
 			</div>
 		</div>
 	</div>

@@ -145,10 +145,10 @@ $(function() {
                 'margin-top': (this.headerHeight + 30) + (this.isAdmin() ? 32 : 0)
             });
             this.$('.js-article').css({
-                'max-height': this.frameHeight - this.headerHeight - 30 - this.footerHeight - 100
+                'height': this.frameHeight - this.headerHeight - 30 - this.footerHeight - 100
             });
             this.$('.js-tabsContent').css({
-                'max-height': this.frameHeight - this.headerHeight - 30 - this.footerHeight - 30
+                'height': this.frameHeight - this.headerHeight - 30 - this.footerHeight - 30
             });
             this.$('.js-newsContainer').css({
                 'height': this.frameHeight - this.headerHeight - 30 - this.footerHeight - 100
@@ -229,7 +229,7 @@ $(function() {
                     appView.$el.delegate('.js-slideArrowLeft', 'click', function() {
                         appView.prevPage();
                     });
-                }, 300);
+                }, 1000);
             } else {
                 var self = this;
                 // To prevent dbl click
@@ -237,7 +237,7 @@ $(function() {
                     appView.$el.delegate('.js-slideArrowLeft', 'click keyup', function() {
                         appView.prevPage();
                     });
-                }, 300);
+                }, 1000);
 
                 appView.$('.js-section').each(function(index, el) {
                     if (index === self.framesCount - 1) {
@@ -322,7 +322,7 @@ $(function() {
                     appView.$el.delegate('.js-slideArrowRight', 'click keyup', function() {
                         appView.nextPage();
                     });
-                }, 300);
+                }, 1000);
             } else {
                 appView.$('.js-section').each(function(index, el) {
                     if (index === 0) {
