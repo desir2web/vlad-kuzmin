@@ -650,27 +650,14 @@ $(function() {
                 this.render();
             }, this);
         },
-        render: function() {
-            var self = this;
-            this.collection.each(function(galleryItem) {
-                var galleryItemView = new App.Views.GalleryItem({
-                    model: galleryItem
-                });
-                this.$('.js-galleryContainer').find('ul').append(galleryItemView.el);
-            }, this);
-
-            // Gallery scroll init
-            this.$('.js-scroll').perfectScrollbar({
-                wheelSpeed: 40
-            });
-
-            appView.$('.js-galleryPopup, .js-showPhotoPopup a, .js-showVideoPopup a').colorbox({
+        colorbox: function(element, isIframe) {
+            appView.$(element).colorbox({
                 maxWidth: '70%',
                 maxHeight: '70%',
                 className: 'colorbox-overlay',
                 closeButton: false,
                 transition: 'elastic',
-                iframe: true,
+                iframe: isIframe,
                 onOpen: function() {
                     var closeTpl = '<div class="close-popup js-colorboxCloseBtn"><div class="sprite icon icon-close"></div></div>',
                         leftArrow = '<div class="arrow arrow_left arrow_always js-colorboxArrowLeft"><svg viewBox="0 0 64.347 127.279" class="icon icon-slida-arrow-left"><use xlink:href="#slide-arrow-left"></use></svg></div>',
@@ -699,6 +686,24 @@ $(function() {
                     });
                 }
             });
+        },
+        render: function() {
+            var self = this;
+            this.collection.each(function(galleryItem) {
+                var galleryItemView = new App.Views.GalleryItem({
+                    model: galleryItem
+                });
+                this.$('.js-galleryContainer').find('ul').append(galleryItemView.el);
+            }, this);
+
+            // Gallery scroll init
+            this.$('.js-scroll').perfectScrollbar({
+                wheelSpeed: 40
+            });
+
+            // Color box
+            this.colorbox('.js-galleryPopup, .js-showPhotoPopup a', false);
+            this.colorbox('.js-showVideoPopup a', true);
         }
     });
 
