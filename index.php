@@ -30,11 +30,6 @@
 <?php wp_head(); ?>
 </head>
 <body>
-	<style>
-		.is-admin #loadingFade {
-			display: none !important;
-		}
-	</style>
 	<div class="loading-fade js-loadingFade" id="loadingFade">
 		<ul class="loading-fade__list">
 			<li class="loading-fade__item loading-fade__item_up js-loadingItem js-loadingItemLogo"></li>
