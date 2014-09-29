@@ -858,7 +858,7 @@ $(function() {
                     date: moment(item.split('=')[1], 'YYYYMM').format('YYYY-MM'),
                     year: moment(item.split('=')[1], 'YYYYMM').format('YYYY'),
                     month: moment(item.split('=')[1], 'YYYYMM').format('MMMM'),
-                    link: '?json=get_date_posts&date=' + moment(item.split('=')[1], 'YYYYMM').format('YYYY-MM')
+                    link: '?json=get_date_posts&date=' + moment(item.split('=')[1], 'YYYYMM').format('YYYY-MM') + '&category_name=news'
                 };
             });
         },
