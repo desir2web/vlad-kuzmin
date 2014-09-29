@@ -650,12 +650,14 @@ $(function() {
                 this.render();
             }, this);
         },
-        colorbox: function(element, isIframe, width, height) {
+        colorbox: function(element, isIframe, width, height, iWidth, iHeight) {
+            var popupsCount = $(element).length;
+            console.log(element, popupsCount);
             appView.$(element).colorbox({
                 maxWidth: width,
                 maxHeight: height,
-                innerWidth: width,
-                innerHeight: height,
+                innerWidth: iWidth,
+                innerHeight: iHeight,
                 className: 'colorbox-overlay',
                 closeButton: false,
                 transition: 'elastic',
@@ -664,12 +666,19 @@ $(function() {
                     var closeTpl = '<div class="close-popup js-colorboxCloseBtn"><div class="sprite icon icon-close"></div></div>',
                         leftArrow = '<div class="arrow arrow_left arrow_always js-colorboxArrowLeft"><svg viewBox="0 0 64.347 127.279" class="icon icon-slida-arrow-left"><use xlink:href="#slide-arrow-left"></use></svg></div>',
                         rightArrow = '<div class="arrow arrow_right arrow_always js-colorboxArrowRight"><svg viewBox="0 0 64.347 127.279" class="icon icon-slida-arrow-right"><use xlink:href="#slide-arrow-right"></use></svg></div>';
-                    $('body').append(closeTpl + leftArrow + rightArrow);
+
+                    $('.js-colorboxArrowLeft, .js-colorboxArrowRight').remove();
+                    $('body').append(closeTpl);
+                    if (popupsCount > 1) {
+                        $('body').append(closeTpl + leftArrow + rightArrow);
+                    }
+
                     // close
                     $('body').on('click', '.js-colorboxCloseBtn', function() {
                         $.colorbox.close();
                         $(this).remove();
                     });
+
                     // prev
                     $('body').on('click', '.js-colorboxArrowLeft', function() {
                         $.colorbox.prev();
@@ -678,6 +687,8 @@ $(function() {
                     $('body').on('click', '.js-colorboxArrowRight', function() {
                         $.colorbox.next();
                     });
+
+
 
                     $('body').off('keyup');
                 },
@@ -704,8 +715,9 @@ $(function() {
             });
 
             // Color box
-            this.colorbox('.js-galleryPopup, .js-showPhotoPopup a', false, '70%', '70%');
-            this.colorbox('.js-showVideoPopup a', true, 768, 480);
+            this.colorbox('.js-galleryPopup', false, '70%', '70%', '', '');
+            this.colorbox('.js-showPhotoPopup a', false, '70%', '70%', '', '');
+            this.colorbox('.js-showVideoPopup a', true, 768, 480, 768, 768);
         }
     });
 
