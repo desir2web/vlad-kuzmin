@@ -650,10 +650,12 @@ $(function() {
                 this.render();
             }, this);
         },
-        colorbox: function(element, isIframe) {
+        colorbox: function(element, isIframe, width, height) {
             appView.$(element).colorbox({
-                maxWidth: '70%',
-                maxHeight: '70%',
+                maxWidth: width,
+                maxHeight: height,
+                innerWidth: width,
+                innerHeight: height,
                 className: 'colorbox-overlay',
                 closeButton: false,
                 transition: 'elastic',
@@ -702,8 +704,8 @@ $(function() {
             });
 
             // Color box
-            this.colorbox('.js-galleryPopup, .js-showPhotoPopup a', false);
-            this.colorbox('.js-showVideoPopup a', true);
+            this.colorbox('.js-galleryPopup, .js-showPhotoPopup a', false, '70%', '70%');
+            this.colorbox('.js-showVideoPopup a', true, 768, 480);
         }
     });
 
