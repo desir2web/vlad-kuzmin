@@ -191,8 +191,9 @@ $(function() {
                 // self.$('.js-framesContainer').prepend('<div class="color-overlay js-colorOverlay"></div>');
             }, 3000);
 
-            // Group show photos
-            this.$('.js-galleryPopupData').find('a').attr('rel', 'show-photos');
+            // Group show photos and video
+            this.$('.js-showPhotoPopup').find('a').attr('rel', 'show-photos');
+            this.$('.js-showVideoPopup').find('a').attr('rel', 'show-video');
 
             // Remove wp panel
             $('html, body').attr('style', 'margin-top: 0 !important');
@@ -398,10 +399,11 @@ $(function() {
             }
         },
         showVideoSlider: function() {
-            this.$('.js-videoSlider').fadeIn('fast');
+            console.log(this.$('.js-showVideoPopup a').eq(0));
+            this.$('.js-showVideoPopup a').eq(0).trigger('click');
         },
         showPhotoSlider: function() {
-            this.$('.js-galleryPopupData a').eq(0).trigger('click');
+            this.$('.js-showPhotoPopup a').eq(0).trigger('click');
         }
     });
 
@@ -662,12 +664,13 @@ $(function() {
                 wheelSpeed: 40
             });
 
-            appView.$('.js-galleryPopup, .js-galleryPopupData a').colorbox({
+            appView.$('.js-galleryPopup, .js-showPhotoPopup a, .js-showVideoPopup a').colorbox({
                 maxWidth: '70%',
                 maxHeight: '70%',
                 className: 'colorbox-overlay',
                 closeButton: false,
                 transition: 'elastic',
+                iframe: true,
                 onOpen: function() {
                     var closeTpl = '<div class="close-popup js-colorboxCloseBtn"><div class="sprite icon icon-close"></div></div>',
                         leftArrow = '<div class="arrow arrow_left arrow_always js-colorboxArrowLeft"><svg viewBox="0 0 64.347 127.279" class="icon icon-slida-arrow-left"><use xlink:href="#slide-arrow-left"></use></svg></div>',

@@ -30,7 +30,7 @@
 							</div>
 						</td>
 						<td class="links__item wow bounceInUp" data-wow-delay="1.3s">
-							<div class="links__item-inner">
+							<div class="links__item-inner js-showVideoSliderBtn">
 								<div class="links__icon">
 									<div class="sprite icon icon-video"></div>
 								</div>
@@ -47,7 +47,7 @@
 		</div>
 	</div>
 	<!-- Show photos -->
-	<div class="js-galleryPopupData hide">
+	<div class="js-showPhotoPopup hide">
 		<?php
 			$page_id = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_name = 'show-photo'");
 			$page_data = get_page( $page_id );
@@ -57,7 +57,7 @@
 		<?php echo apply_filters( 'the_content', $content ); ?>
 	</div>
     <!-- Show video -->
-	<div class="js-galleryPopupData hide">
+	<div class="js-showVideoPopup hide">
 		<?php
 			$page_id = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_name = 'show-video'");
 			$page_data = get_page( $page_id );
