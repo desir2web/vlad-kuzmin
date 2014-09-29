@@ -17,7 +17,7 @@
 			<table class="links__list">
 				<tbody>
 					<tr>
-						<td class="links__item wow bounceInUp" data-wow-delay="1.1s">
+						<td class="links__item wow bounceInLeft" data-wow-delay="1.1s" data-wow-duration="1.5s">
 							<div class="links__item-inner js-showPhotoSliderBtn">
 								<div class="links__icon">
 									<div class="sprite icon icon-photo"></div>
@@ -29,7 +29,7 @@
 								</div>
 							</div>
 						</td>
-						<td class="links__item wow bounceInUp" data-wow-delay="1.3s">
+						<td class="links__item wow bounceInRight" data-wow-delay="1.6s" data-wow-duration="1.5s">
 							<div class="links__item-inner js-showVideoSliderBtn">
 								<div class="links__icon">
 									<div class="sprite icon icon-video"></div>
