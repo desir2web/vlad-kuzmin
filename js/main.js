@@ -864,7 +864,7 @@ $(function() {
         },
     });
     App.Collections.News = Backbone.Collection.extend({
-        url: $('#newsItemTemplate').data('url') + '/?json=get_posts',
+        url: $('#newsItemTemplate').data('url') + '/?json=get_posts&category_name=news',
         parse: function(response) {
             return response.posts;
         },

@@ -33,7 +33,7 @@
 							</a>
 						</td>
 						<td class="main-menu__cell">
-							<a href="#news" class="main-menu__link js-menuLink js-recentNewsBtn" data-id="5" data-url="<?php bloginfo('wpurl'); ?>/?json=get_posts">
+							<a href="#news" class="main-menu__link js-menuLink js-recentNewsBtn" data-id="5" data-url="<?php bloginfo('wpurl'); ?>/?json=get_posts&category_name=news">
 								Новости
 							</a>
 						</td>
