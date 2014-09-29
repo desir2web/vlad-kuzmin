@@ -168,8 +168,6 @@ $(function() {
                 self.resize(event);
             });
 
-            console.log(this.isAdmin());
-
             this.setSizes();
 
             // Columnizer
@@ -194,6 +192,9 @@ $(function() {
             // Group show photos and video
             this.$('.js-showPhotoPopup').find('a').attr('rel', 'show-photos');
             this.$('.js-showVideoPopup').find('a').attr('rel', 'show-video');
+            this.$('[id^="gallery-"]').each(function(index, el) {
+                $(el).find('a').attr('rel', $(el).attr('id'));
+            });
 
             // Remove wp panel
             $('html, body').attr('style', 'margin-top: 0 !important');
@@ -399,7 +400,6 @@ $(function() {
             }
         },
         showVideoSlider: function() {
-            console.log(this.$('.js-showVideoPopup a').eq(0));
             this.$('.js-showVideoPopup a').eq(0).trigger('click');
         },
         showPhotoSlider: function() {
@@ -652,7 +652,6 @@ $(function() {
         },
         colorbox: function(element, isIframe, width, height, iWidth, iHeight) {
             var popupsCount = $(element).length;
-            console.log(element, popupsCount);
             appView.$(element).colorbox({
                 maxWidth: width,
                 maxHeight: height,
@@ -717,6 +716,7 @@ $(function() {
             // Color box
             this.colorbox('.js-galleryPopup', false, '70%', '70%', '', '');
             this.colorbox('.js-showPhotoPopup a', false, '70%', '70%', '', '');
+            this.colorbox('.gallery-icon a', false, '70%', '70%', '', '');
             this.colorbox('.js-showVideoPopup a', true, 768, 480, 768, 768);
         }
     });
