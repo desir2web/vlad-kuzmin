@@ -17,10 +17,10 @@ Data to perform:
 6. News -> Post -> category(news,important)
 7. Contacts -> Widget -> Telephone(text)
 
+---
 
 Short codes for accordion:
 
----
 
 ```html
 [accordion text="Accordion label"]
@@ -29,10 +29,10 @@ Short codes for accordion:
 	[/content]
 [/accordion]
 ```
+---
 
 Table for schedule:
 
----
 
 ```html
 <table>
