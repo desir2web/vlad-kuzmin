@@ -3651,6 +3651,43 @@ textarea:focus {
   width: 820px;
   padding-left: 80px;
 }
+.tabs__content .gallery p {
+  margin: 0;
+}
+.tabs__content .gallery-icon {
+  *zoom: 1;
+}
+.tabs__content .gallery-icon:before,
+.tabs__content .gallery-icon:after {
+  content: " ";
+  display: table;
+}
+.tabs__content .gallery-icon:after {
+  clear: both;
+}
+.tabs__content .gallery-item {
+  float: left;
+  margin: 0;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+.tabs__content .gallery-item a {
+  float: left;
+  *zoom: 1;
+}
+.tabs__content .gallery-item a:before,
+.tabs__content .gallery-item a:after {
+  content: " ";
+  display: table;
+}
+.tabs__content .gallery-item a:after {
+  clear: both;
+}
+.tabs__content .gallery-item img {
+  width: 150px;
+  height: 150px;
+  float: left;
+}
 .tabs__content-list {
   list-style: none;
   padding: 0;
