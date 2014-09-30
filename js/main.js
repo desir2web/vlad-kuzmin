@@ -673,9 +673,11 @@ $(function() {
                         rightArrow = '<div class="arrow arrow_right arrow_always js-colorboxArrowRight"><svg viewBox="0 0 64.347 127.279" class="icon icon-slida-arrow-right"><use xlink:href="#slide-arrow-right"></use></svg></div>';
 
                     $('.js-colorboxArrowLeft, .js-colorboxArrowRight').remove();
-                    $('body').append(closeTpl);
+                    if ($('.js-colorboxCloseBtn').length === 0) {
+                        $('body').append(closeTpl);
+                    }
                     if (popupsCount > 1) {
-                        $('body').append(closeTpl + leftArrow + rightArrow);
+                        $('body').append(leftArrow + rightArrow);
                     }
 
                     // close
