@@ -3747,6 +3747,22 @@ textarea:focus {
   margin: 0;
   padding-bottom: 0;
   line-height: 24px;
+  margin-bottom: 20px;
+}
+.accordion__content p:last-child {
+  margin-bottom: 0;
+}
+.accordion__content table {
+  width: 97%;
+}
+.accordion__content table thead {
+  border-bottom: solid 1px #fff;
+}
+.accordion__content table thead td {
+  padding-bottom: 20px;
+}
+.accordion__content table tbody td {
+  padding-top: 20px;
 }
 .gallery__inner {
   position: relative;
