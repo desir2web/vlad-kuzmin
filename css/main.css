@@ -3159,6 +3159,7 @@ textarea:focus {
   margin-left: 30px;
   display: inline-block;
   cursor: pointer;
+  text-decoration: none;
   z-index: 5;
 }
 .btn:hover .btn__text {
