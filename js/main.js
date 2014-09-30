@@ -146,16 +146,16 @@ $(function() {
                 'margin-top': (this.headerHeight + 30) + (this.isAdmin() ? 32 : 0)
             });
             this.$('.js-article').css({
-                'height': this.frameHeight - this.headerHeight - 30 - this.footerHeight - 100
+                'height': this.frameHeight - this.headerHeight - 30 - this.footerHeight - 100 - (this.isAdmin() ? 32 : 0)
             });
             this.$('.js-tabsContent').css({
-                'height': this.frameHeight - this.headerHeight - 30 - this.footerHeight - 30
+                'height': this.frameHeight - this.headerHeight - 30 - this.footerHeight - 30 - (this.isAdmin() ? 32 : 0)
             });
             this.$('.js-newsContainer').css({
-                'height': this.frameHeight - this.headerHeight - 30 - this.footerHeight - 100
+                'height': this.frameHeight - this.headerHeight - 30 - this.footerHeight - 100 - (this.isAdmin() ? 32 : 0)
             });
             this.$('.js-galleryContainer').css({
-                'height': this.frameHeight - this.headerHeight - 30 - this.footerHeight - 30
+                'height': this.frameHeight - this.headerHeight - 30 - this.footerHeight - 30 - (this.isAdmin() ? 32 : 0)
             });
             if (this.isAdmin()) {
                 this.$('.js-siteHeader').css({
