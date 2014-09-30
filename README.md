@@ -16,3 +16,38 @@ Data to perform:
 5. Gallery -> Page -> slug(gallery) {insert gallery}
 6. News -> Post -> category(news,important)
 7. Contacts -> Widget -> Telephone(text)
+
+
+Short codes for accordion:
+
+---
+
+```html
+[accordion text="Accordion label"]
+	[content]
+		Accordion content
+	[/content]
+[/accordion]
+```
+
+Table for schedule:
+
+---
+
+```html
+<table>
+	<thead>
+		<tr>
+			<td>Пн.</td><td>Ср.</td><td>Пт.</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>15:00-17:00</td><td>18:00-20:00</td><td>22:00-23:00</td>
+		</tr>
+		<tr>
+			<td>15:00-17:00</td><td>18:00-20:00</td><td>22:00-23:00</td>
+		</tr>
+	</tbody>
+</table>
+```
