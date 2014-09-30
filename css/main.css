@@ -2632,6 +2632,7 @@ textarea:focus {
 }
 .section {
   position: absolute;
+  overflow: hidden;
 }
 .section_home {
   background: url(../img/slides/01.jpg) 50% center no-repeat;
