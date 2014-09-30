@@ -3700,6 +3700,9 @@ textarea:focus {
   display: none;
   overflow-y: hidden;
 }
+.tabs__content-item p {
+  padding-right: 20px;
+}
 .tabs__text {
   font-size: 16px;
   font-family: 'Clear Sans';
@@ -3712,7 +3715,7 @@ textarea:focus {
 .accordion .icon {
   width: 18px;
   height: 18px;
-  margin-right: 5px;
+  margin-right: 10px;
 }
 .accordion .icon-minus {
   display: none;
@@ -3738,10 +3741,10 @@ textarea:focus {
 }
 .accordion__content {
   display: none;
+  padding-left: 27px;
 }
 .accordion__content p {
   margin: 0;
-  padding: 0 0 20px 23px;
   padding-bottom: 0;
   line-height: 24px;
 }
@@ -3829,6 +3832,10 @@ textarea:focus {
 .gallery__img {
   width: 215px;
   height: 215px;
+}
+.ps-container .ps-scrollbar-y-rail:hover,
+.ps-container .ps-scrollbar-y-rail.hover {
+  background: none !important;
 }
 .sprite {
   position: relative;
