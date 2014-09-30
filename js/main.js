@@ -487,6 +487,12 @@ $(function() {
             }, this);
         },
         render: function() {
+            if (this.collection.models.length === 0) {
+                appView.$('.js-showNewsArchiveBtn').hide();
+            } else {
+                appView.$('.js-showNewsArchiveBtn').show();
+            }
+
             this.$el.html('');
             this.collection.each(function(newsItem, index) {
                 var newsItemView = new App.Views.NewsItem({
