@@ -9,11 +9,18 @@
             ?>
             <?php echo apply_filters( 'the_content', $content ); ?>
 		</article>
-		<a href="#" class="btn btn_bottom js-showResumeVideoSliderBtn wow bounceInUp" data-wow-delay="0.65s">
-			<span class="sprite icon icon-play"></span>
-			<span class="btn__text">
-				Демонстрационное видео
-			</span>
-		</a>
+        <?php
+        $video = get_post_meta($page_id, 'video', true);
+        ?>
+        <?php if ($video == ""): ?>
+            <div></div>
+        <?php else: ?>
+            <a href="<?php echo $video; ?>" class="btn btn_bottom js-showResumeVideoSliderBtn wow bounceInUp" data-wow-delay="0.65s">
+                <span class="sprite icon icon-play"></span>
+                <span class="btn__text">
+                    Демонстрационное видео
+                </span>
+            </a>
+        <?php endif; ?>
 	</div>
 </section>
