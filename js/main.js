@@ -689,7 +689,13 @@ $(function() {
                 onOpen: function() {
                     var closeTpl = '<div class="close-popup js-colorboxCloseBtn"><div class="sprite icon icon-close"></div></div>',
                         leftArrow = '<div class="arrow arrow_left arrow_always js-colorboxArrowLeft"><svg viewBox="0 0 64.347 127.279" class="icon icon-slida-arrow-left"><use xlink:href="#slide-arrow-left"></use></svg></div>',
-                        rightArrow = '<div class="arrow arrow_right arrow_always js-colorboxArrowRight"><svg viewBox="0 0 64.347 127.279" class="icon icon-slida-arrow-right"><use xlink:href="#slide-arrow-right"></use></svg></div>';
+                        rightArrow = '<div class="arrow arrow_right arrow_always js-colorboxArrowRight"><svg viewBox="0 0 64.347 127.279" class="icon icon-slida-arrow-right"><use xlink:href="#slide-arrow-right"></use></svg></div>',
+                        miniLogo = '<div class="js-colorboxLogo colorbox-logo"></div>';
+
+                    $('.js-colorboxLogo').remove();
+                    if ($('.js-colorboxLogo').length === 0 && isIframe) {
+                        $('body').append(miniLogo);
+                    }
 
                     $('.js-colorboxArrowLeft, .js-colorboxArrowRight').remove();
                     if ($('.js-colorboxCloseBtn').length === 0) {
