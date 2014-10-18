@@ -807,6 +807,18 @@ $(function() {
             });
 
             self.setOverlayColor(frame);
+
+            // Close all accrodions
+            var $accordionBtn = appView.$('.js-accordionBtn'),
+                $accordion = appView.$('.js-accordion'),
+                $content = $accordion.find('.js-accordionContent'),
+                $plus = $accordion.find('.js-accordionPlus'),
+                $minus = $accordion.find('.js-accordionMinus');
+
+            $accordionBtn.removeClass('expanded');
+            $content.slideUp('fast');
+            $plus.show();
+            $minus.hide();
         },
         getRouteId: function(routeName) {
             var pageId = null;
