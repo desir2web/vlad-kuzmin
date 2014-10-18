@@ -729,6 +729,7 @@ $(function() {
                     $('body').on('keyup', function(e) {
                         appView.arrowSlide(e);
                     });
+                    $('.js-colorboxLogo').remove();
                 }
             });
         },
