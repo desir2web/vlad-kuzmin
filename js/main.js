@@ -177,7 +177,7 @@ $(function() {
                 lastNeverTallest: true,
                 buildOnce: true,
                 doneFunc: function(e) {
-                    self.$('.column').addClass('wow bounceInDown');
+                    self.$('.column').addClass('wow fadeInLeft');
                     self.$('.column').each(function(index, el) {
                         $(el).attr('data-wow-delay', 0.3 * (index + 0.3) + 's');
                     });
