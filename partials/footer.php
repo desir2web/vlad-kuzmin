@@ -39,7 +39,7 @@
 				</div>
 			</li>
 			<li class="site-footer__item site-footer__item_right">
-				Сделал&nbsp;&mdash;&nbsp;<a href="#" class="site-footer__link">Desir</a>
+				Сделал&nbsp;&mdash;&nbsp;<a href="http://desir.me/" class="site-footer__link">Desir</a>
 			</li>
 		</ul>
 	</div>
