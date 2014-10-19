@@ -17,7 +17,7 @@
             echo ' | ' . sprintf( __( 'Page %s', 'twentyten' ), max( $paged, $page ) );
     ?>
     </title>
-	<script data-pace-options='{ "ajax": true, "document": true, "elements": ["img"] }' src="<?php bloginfo('template_url'); ?>/js/pace.min.js"></script>
+	<script data-pace-options='{ "ajax": false, "document": true, "elements": ["img"] }' src="<?php bloginfo('template_url'); ?>/js/pace.min.js"></script>
 	<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/pace-theme-minimal.css">
 	<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/perfect-scrollbar.min.css">
 	<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/colorbox.css">
