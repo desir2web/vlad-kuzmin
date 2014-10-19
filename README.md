@@ -8,7 +8,9 @@ WordPress theme
 
 Data to perform:
 
-1. Home
+1. Home -> Post -> title(showreel)
+1. Home -> Post -> title(show-programm)
+1. Home -> Post -> title(dance-school)
 2. Resume -> Page -> slug(resume)
 3. Show programm (photo) -> Page -> slug(show-photo)
 3. Show programm (video) -> Page -> slug(show-video)

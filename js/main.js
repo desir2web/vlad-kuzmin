@@ -56,7 +56,11 @@ $(function() {
             'click .js-slideArrowRight': 'nextPage',
             'click .js-showVideoSliderBtn': 'showVideoSlider',
             'click .js-showPhotoSliderBtn': 'showPhotoSlider',
-            'click .js-showHomeVideoSliderBtn': 'showHomeVideoSlider',
+
+            'click .js-showreelVideoBtn': 'showreelVideo',
+            'click .js-showProgrammVideoBtn': 'showProgrammVideo',
+            'click .js-schoolVideoBtn': 'schoolVideo',
+
             'keyup': 'arrowSlide',
             'click .js-menuLink': 'setPointer',
             'click .js-recentNewsBtn': 'renderRecentNews'
@@ -68,6 +72,15 @@ $(function() {
         headerHeight: 0,
         footerHeight: 0,
         animationSpeed: 500,
+        showreelVideo: function() {
+            this.$('.js-showreelVideoPopup').find('a:first').click();
+        },
+        showProgrammVideo: function() {
+            this.$('.js-showProgrammVideoPopup').find('a:first').click();
+        },
+        schoolVideo: function() {
+            this.$('.js-schoolVideoPopup').find('a:first').click();
+        },
         isAdmin: function() {
             if ($('html.js-isAdmin').length > 0) {
                 return true;
@@ -177,7 +190,7 @@ $(function() {
                 lastNeverTallest: true,
                 buildOnce: true,
                 doneFunc: function(e) {
-                    self.$('.column').addClass('wow bounceInDown');
+                    self.$('.column').addClass('wow fadeInLeft');
                     self.$('.column').each(function(index, el) {
                         $(el).attr('data-wow-delay', 0.3 * (index + 0.3) + 's');
                     });
@@ -193,7 +206,11 @@ $(function() {
             // Group show photos and video
             this.$('.js-showPhotoPopup').find('a').attr('rel', 'show-photos');
             this.$('.js-showVideoPopup').find('a').attr('rel', 'show-video');
-            this.$('.js-showHomeVideoPopup').find('a').attr('rel', 'home-video');
+
+            this.$('.js-showreelVideoPopup').find('a').attr('rel', 'showreelVideo');
+            this.$('.js-showProgrammVideoPopup').find('a').attr('rel', 'showProgrammVideo');
+            this.$('.js-schoolVideoPopup').find('a').attr('rel', 'schoolVideo');
+
             this.$('[id^="gallery-"]').each(function(index, el) {
                 $(el).find('a').attr('rel', $(el).attr('id'));
             });
@@ -406,10 +423,6 @@ $(function() {
         },
         showPhotoSlider: function() {
             this.$('.js-showPhotoPopup a').eq(0).trigger('click');
-        },
-        showHomeVideoSlider: function(e) {
-            var id = $(e.currentTarget).data('id');
-            this.$('.js-showHomeVideoPopup a').eq(id).trigger('click');
         }
     });
 
@@ -676,7 +689,13 @@ $(function() {
                 onOpen: function() {
                     var closeTpl = '<div class="close-popup js-colorboxCloseBtn"><div class="sprite icon icon-close"></div></div>',
                         leftArrow = '<div class="arrow arrow_left arrow_always js-colorboxArrowLeft"><svg viewBox="0 0 64.347 127.279" class="icon icon-slida-arrow-left"><use xlink:href="#slide-arrow-left"></use></svg></div>',
-                        rightArrow = '<div class="arrow arrow_right arrow_always js-colorboxArrowRight"><svg viewBox="0 0 64.347 127.279" class="icon icon-slida-arrow-right"><use xlink:href="#slide-arrow-right"></use></svg></div>';
+                        rightArrow = '<div class="arrow arrow_right arrow_always js-colorboxArrowRight"><svg viewBox="0 0 64.347 127.279" class="icon icon-slida-arrow-right"><use xlink:href="#slide-arrow-right"></use></svg></div>',
+                        miniLogo = '<div class="js-colorboxLogo colorbox-logo"></div>';
+
+                    $('.js-colorboxLogo').remove();
+                    if ($('.js-colorboxLogo').length === 0 && isIframe) {
+                        $('body').append(miniLogo);
+                    }
 
                     $('.js-colorboxArrowLeft, .js-colorboxArrowRight').remove();
                     if ($('.js-colorboxCloseBtn').length === 0) {
@@ -710,6 +729,7 @@ $(function() {
                     $('body').on('keyup', function(e) {
                         appView.arrowSlide(e);
                     });
+                    $('.js-colorboxLogo').remove();
                 }
             });
         },
@@ -731,7 +751,11 @@ $(function() {
             this.colorbox('.js-galleryPopup', false, '70%', '70%', '', '');
             this.colorbox('.js-showPhotoPopup a', false, '70%', '70%', '', '');
             this.colorbox('.gallery-icon a', false, '70%', '70%', '', '');
-            this.colorbox('.js-showHomeVideoPopup a', true, 768, 480, 768, 768);
+
+            this.colorbox('.js-showreelVideoPopup a', true, 768, 480, 768, 768);
+            this.colorbox('.js-showProgrammVideoPopup a', true, 768, 480, 768, 768);
+            this.colorbox('.js-schoolVideoPopup a', true, 768, 480, 768, 768);
+
             this.colorbox('.js-showVideoPopup a', true, 768, 480, 768, 768);
             this.colorbox('.js-showResumeVideoSliderBtn', true, 768, 480, 768, 768);
         }
@@ -807,6 +831,18 @@ $(function() {
             });
 
             self.setOverlayColor(frame);
+
+            // Close all accrodions
+            var $accordionBtn = appView.$('.js-accordionBtn'),
+                $accordion = appView.$('.js-accordion'),
+                $content = $accordion.find('.js-accordionContent'),
+                $plus = $accordion.find('.js-accordionPlus'),
+                $minus = $accordion.find('.js-accordionMinus');
+
+            $accordionBtn.removeClass('expanded');
+            $content.slideUp('fast');
+            $plus.show();
+            $minus.hide();
         },
         getRouteId: function(routeName) {
             var pageId = null;
