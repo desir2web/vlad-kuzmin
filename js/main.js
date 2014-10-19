@@ -904,6 +904,8 @@ $(function() {
      *
      ******************/
 
+    App.Collections.ShowPhotos = Backbone.Collection.extend({});
+
     App.Collections.Gallery = Backbone.Collection.extend({
         url: $('#galleryItemTemplate').data('url'),
         parse: function(response) {

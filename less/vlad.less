@@ -1,0 +1,35 @@
+.vlad {
+	position: absolute;
+	left: 50%;
+	top: 0;
+	width: 656px;
+	height: 847px;
+	margin-left: -295px;
+	z-index: 5;
+	&__list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+	&__item {
+		position: absolute;
+		left: 0;
+		top: 0;
+		transition: transform 1s;
+		z-index: 5;
+		&_left {
+			left: -200px;
+			// transform: translate3d(-200px, 0, 0);
+			z-index: 2;
+		}
+		&_right {
+			left: 200px;
+			// transform: translate3d(200px, 0, 0);
+			z-index: 2;
+		}
+	}
+	&__img {
+		width: 656px;
+		height: 847px;
+	}
+}

@@ -1,0 +1,31 @@
+.site-footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	z-index: 10;
+	&__list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		.clearfix();
+	}
+	&__item {
+		float: left;
+		width: (100% / 3);
+		font-size: 24px;
+		.ristretto();
+		color: #fff;
+		&_center {
+			text-align: center;
+		}
+		&_right {
+			text-align: right;
+		}
+	}
+	&__link {
+		color: #fff;
+		text-decoration: none;
+		border-bottom: solid 1px;
+	}
+}

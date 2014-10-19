@@ -1,0 +1,23 @@
+.article {
+	position: relative;
+	max-height: 380px;
+	overflow: hidden;
+	z-index: 5;
+	&_3-columns {
+		column-count: 3;
+		column-gap: 80px;
+	}
+	p {
+		margin: 0;
+		margin-bottom: 24px;
+		line-height: 24px;
+		font-size: 16px;
+		color: #fff;
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+	.column {
+		padding: 0 30px;
+	}
+}

@@ -1,0 +1,67 @@
+.main-menu {
+	width: 100%;
+	position: relative;
+	&:before {
+		content: '';
+		background: url('../img/dashed.svg');
+		position: absolute;
+		width: 100%;
+		height: 1px;
+		bottom: 0;
+		left: 0;
+	}
+	.icon-active-menu {
+		width: 10px;
+		height: 6px;
+		display: inline-block;
+		position: absolute;
+		top: 5px;
+		transition: left .6s;
+	}
+	&__inner {
+		width: 100%;
+	}
+	&__list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		.clearfix();
+	}
+	&__item {
+		float: left;
+	}
+	&__cell {
+
+	}
+	&__link {
+		display: inline-block;
+		padding: 15px 28px;
+		text-decoration: none;
+		font-size: 30px;
+		background: rgba(255,255,255,0);
+		transition: background .3s, border .3s;
+		line-height: 1;
+		height: 61px;
+		white-space: nowrap;
+		.ristretto();
+		border-bottom: solid 1px rgba(255,255,255,0);
+		position: relative;
+		color: #fff;
+		&:hover {
+			border-bottom: solid 1px rgba(255,255,255,1);
+			background: rgba(255,255,255,.05);
+			.icon-home {
+				animation-play-state: running;
+			}
+		}
+		&_home {
+			padding: 15px;
+		}
+		.icon-home {
+			width: 26px;
+			height: 23px;
+			animation: home 1s steps(29) infinite;
+			animation-play-state: paused;
+		}
+	}
+}

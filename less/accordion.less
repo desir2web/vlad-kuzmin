@@ -1,0 +1,42 @@
+.accordion {
+	margin-bottom: 20px;
+	.icon {
+		width: 18px;
+		height: 18px;
+		margin-right: 5px;
+	}
+	.icon-minus {
+		display: none;
+	}
+	&__btn {
+		text-decoration: none;
+		&:hover {
+			.accordion__label {
+				border-bottom: solid 1px;
+			}
+		}
+		&.expanded {
+			.icon-minus {
+				display: inherit;
+			}
+			.icon-plus {
+				display: none;
+			}
+		}
+	}
+	&__label {
+		font-size: 30px;
+		.ristretto();
+		border-bottom: dashed 1px;
+		.non-select();
+	}
+	&__content {
+		display: none;
+		p {
+			margin: 0;
+			padding: 15px 27px;
+			padding-bottom: 0;
+			line-height: 24px;
+		}
+	}
+}
