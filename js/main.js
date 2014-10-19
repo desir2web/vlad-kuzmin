@@ -190,7 +190,7 @@ $(function() {
                 lastNeverTallest: true,
                 buildOnce: true,
                 doneFunc: function(e) {
-                    self.$('.column').addClass('wow fadeInLeft');
+                    self.$('.column').addClass('wow fadeInDown');
                     self.$('.column').each(function(index, el) {
                         $(el).attr('data-wow-delay', 0.3 * (index + 0.3) + 's');
                     });
