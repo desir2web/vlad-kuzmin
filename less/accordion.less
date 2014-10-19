@@ -3,7 +3,7 @@
 	.icon {
 		width: 18px;
 		height: 18px;
-		margin-right: 5px;
+		margin-right: 10px;
 	}
 	.icon-minus {
 		display: none;
@@ -32,11 +32,29 @@
 	}
 	&__content {
 		display: none;
+		padding-left: 27px;
 		p {
 			margin: 0;
-			padding: 15px 27px;
 			padding-bottom: 0;
 			line-height: 24px;
+			margin-bottom: 20px;
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+		table {
+			width: 97%;
+			thead {
+				border-bottom: solid 1px #fff;
+				td {
+					padding-bottom: 20px;
+				}
+			}
+			tbody {
+				td {
+					padding-top: 20px;
+				}
+			}
 		}
 	}
 }

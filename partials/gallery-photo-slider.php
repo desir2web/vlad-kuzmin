@@ -1,4 +1,4 @@
-<div class="slider js-photoSlider">
+<div class="slider slider_photo js-photoSlider">
 	<!-- Overlay -->
 	<div class="slider__overlay js-closeBtn"></div>
 	<!-- Arrows -->
@@ -15,15 +15,7 @@
 	<!-- Content -->
 	<div class="slider__inner js-sliderInner">
 		<ul class="slider__list js-sliderContainer">
-			<li class="slider__item js-sliderItem" id="photo-s1">
-				<img src="<?php bloginfo('template_url'); ?>/img/photo-1.jpg" alt="" class="slider__img">
-			</li>
-			<li class="slider__item js-sliderItem"  id="photo-s2">
-				<img src="<?php bloginfo('template_url'); ?>/img/photo-1.jpg" alt="" class="slider__img">
-			</li>
-			<li class="slider__item js-sliderItem"  id="photo-s3">
-				<img src="<?php bloginfo('template_url'); ?>/img/photo-1.jpg" alt="" class="slider__img">
-			</li>
+			<li class="slider__item js-sliderItem" id="photo-s1" data-id="1"></li>
 		</ul>
 	</div>
 	<div class="slider__close js-closeBtn">

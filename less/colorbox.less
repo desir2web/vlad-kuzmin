@@ -1,0 +1,37 @@
+.colorbox-overlay {
+	background: rgba(22, 22, 22, 0.9) !important;
+}
+
+#cboxContent {
+	margin-top: 0 !important;
+}
+
+.close-popup {
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	top: 50px;
+	right: 50px;
+	cursor: pointer;
+	transition: opacity .3s;
+	z-index: 10001;
+	&:before {
+		content: '';
+		width: 50px;
+		height: 50px;
+		position: absolute;
+		left: 0;
+		top: 0;
+		z-index: 20;
+	}
+	&:hover {
+		opacity: .8;
+		.icon {
+			animation-play-state: running;
+		}
+	}
+	.icon {
+		animation: close 1.8s steps(22) infinite;
+		animation-play-state: paused;
+	}
+}

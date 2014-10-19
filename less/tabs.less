@@ -37,6 +37,29 @@
 		float: left;
 		width: 820px;
 		padding-left: 80px;
+		.gallery {
+			p {
+				margin: 0;
+			}
+		}
+		.gallery-icon {
+			.clearfix();
+		}
+		.gallery-item {
+			float: left;
+			margin: 0;
+			margin-right: 20px;
+			margin-bottom: 20px;
+			a {
+				float: left;
+				.clearfix();
+			}
+			img {
+				width: 150px;
+				height: 150px;
+				float: left;
+			}
+		}
 	}
 	&__content-list {
 		list-style: none;
@@ -48,6 +71,9 @@
 		color: #fff;
 		display: none;
 		overflow-y: hidden;
+		p {
+			padding-right: 20px;
+		}
 	}
 	&__text {
 		font-size: 16px;

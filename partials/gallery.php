@@ -7,12 +7,19 @@
 		</div>
 	</div>
 
+	<!-- Gallery item template -->
 	<script type="text/mustache" id="galleryItemTemplate" data-url="<?php bloginfo('wpurl'); ?>/?json=get_page&slug=gallery">
-		<a href="{{{img}}}" class="gallery__link js-galleryPopup" rel="gallery">
+		<a href="{{id}}" class="gallery__link js-galleryPopup" rel="gallery">
 			<span class="gallery__icon">
 				<div class="sprite icon icon-zoom-in"></div>
 			</span>
 			<div class="gallery__img" style="background: url({{{thumb}}}) 50% center no-repeat; background-size: cover;"></div>
 		</a>
 	</script>
+
+	<!-- Gallery slider item template -->
+	<script type="text/mustache" id="gallerySliderItemTemplate">
+		<li class="slider__item js-sliderItem" id="photo-s{{id}}" data-id="{{id}}" style="background: url('{{{img}}}'); background-size: cover;">
+	</script>
 </section>
+

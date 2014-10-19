@@ -426,71 +426,6 @@ $(function() {
         }
     });
 
-    // Slider view
-
-    App.Views.Slider = Backbone.View.extend({
-        el: '.js-videoSlider',
-        events: {
-            'click .js-slideLeft': 'prevSlide',
-            'click .js-slideRight': 'nextSlide',
-            'click .js-closeBtn': 'close'
-        },
-        slidesCount: 0,
-        slideWidth: 0,
-        currentSlide: 0,
-        escape: function(e) {
-            if (e.keyCode === 27) {
-                this.close();
-            }
-        },
-        close: function() {
-            this.$el.fadeOut('fast');
-        },
-        initialize: function() {
-            var self = this;
-            this.slidesCount = this.$('.js-sliderItem').length;
-            this.slideWidth = this.$('.js-sliderItem').width();
-            this.$('.js-slideLeft').hide();
-
-            this.$('.js-sliderContainer').css({
-                'width': this.slidesCount * this.slideWidth
-            });
-
-            $('body').on('keyup', function(e) {
-                self.escape(e);
-            });
-        },
-        setActiveSlide: function(slide) {
-            this.$('.js-sliderContainer').animate({
-                'left': -slide * this.slideWidth
-            }, appView.animationSpeed);
-        },
-        prevSlide: function(e) {
-            var self = this;
-            this.currentSlide--;
-            if (this.currentSlide > 0) {
-                this.$('.js-slideArrow').show();
-                this.setActiveSlide(this.currentSlide);
-            } else {
-                this.currentSlide = 0;
-                this.setActiveSlide(this.currentSlide);
-                $(e.currentTarget).hide();
-            }
-        },
-        nextSlide: function(e) {
-            var self = this;
-            this.currentSlide++;
-            if (this.currentSlide < this.slidesCount - 1) {
-                this.$('.js-slideArrow').show();
-                this.setActiveSlide(this.currentSlide);
-            } else {
-                this.currentSlide = this.slidesCount - 1;
-                this.setActiveSlide(this.currentSlide);
-                $(e.currentTarget).hide();
-            }
-        }
-    });
-
     // News view
     App.Views.News = Backbone.View.extend({
         el: '.js-newsPage',
@@ -667,9 +602,127 @@ $(function() {
         }
     });
 
+    // Gallery slider
+    App.Views.GallerySlider = Backbone.View.extend({
+        el: '.js-sliderContainer',
+        initialize: function() {
+            this.collection.on('reset', function() {
+                this.render();
+            }, this);
+        },
+        render: function() {
+            this.$el.html('');
+            this.collection.each(function(sliderItem) {
+                var gallarySliderItemView = new App.Views.GallerySliderItem({
+                    model: sliderItem
+                });
+                this.$el.append(gallarySliderItemView.el);
+            }, this);
+        }
+    });
+
+    // Gallery slider item
+    App.Views.GallerySliderItem = Backbone.View.extend({
+        template: $('#gallerySliderItemTemplate').html(),
+        initialize: function() {
+            this.render();
+        },
+        render: function() {
+            var rendered = Mustache.render(this.template, this.model.toJSON());
+            this.$el.html(rendered);
+            return this;
+        }
+    });
+
+    // Photo slider
+    App.Views.Slider = Backbone.View.extend({
+        el: '.js-photoSlider',
+        events: {
+            'click .js-slideLeft': 'prevSlide',
+            'click .js-slideRight': 'nextSlide',
+            'click .js-closeBtn': 'close'
+        },
+        slidesCount: 0,
+        slideWidth: 0,
+        currentSlide: 0,
+        escape: function(e) {
+            if (e.keyCode === 27) {
+                this.close();
+            }
+        },
+        close: function() {
+            this.$el.fadeOut('fast');
+        },
+        initialize: function() {
+            var self = this;
+
+            galleryCollection.on('reset', function() {
+                this.slidesCount = galleryCollection.models.length;
+                this.slideWidth = this.$('.js-sliderItem').width();
+                this.$('.js-slideLeft').hide();
+
+                this.$('.js-sliderContainer').css({
+                    'width': this.slidesCount * this.slideWidth
+                });
+
+                $('body').on('keyup', function(e) {
+                    self.escape(e);
+                });
+
+                this.$('.js-slideArrow').show();
+            }, this);
+        },
+        setActiveSlide: function(slide) {
+            this.$('.js-sliderItem').removeClass('active');
+            this.$('.js-sliderItem[data-id="' + slide + '"]').addClass('active');
+            this.$('.js-sliderContainer').animate({
+                'left': -slide * this.slideWidth
+            }, appView.animationSpeed);
+        },
+        prevSlide: function(e) {
+            var self = this;
+            this.currentSlide--;
+            if (this.currentSlide > 0) {
+                this.$('.js-slideArrow').show();
+                this.setActiveSlide(this.currentSlide);
+            } else {
+                this.currentSlide = 0;
+                this.setActiveSlide(this.currentSlide);
+                $(e.currentTarget).hide();
+            }
+        },
+        nextSlide: function(e) {
+            var self = this;
+            this.currentSlide++;
+            if (this.currentSlide < this.slidesCount - 1) {
+                this.$('.js-slideArrow').show();
+                this.setActiveSlide(this.currentSlide);
+            } else {
+                this.currentSlide = this.slidesCount - 1;
+                this.setActiveSlide(this.currentSlide);
+                $(e.currentTarget).hide();
+            }
+        }
+    });
+
     // Gallery
     App.Views.Gallery = Backbone.View.extend({
         el: '.js-gallery',
+        events: {
+            'click .js-galleryPopup': 'openGallerySlider'
+        },
+        openGallerySlider: function(e) {
+            e.preventDefault();
+            var $currentTarget = $(e.currentTarget);
+            appView.$('.js-photoSlider').fadeIn('fast', function() {
+                galleryPhotoSlider.$('.js-sliderContainer').css({
+                    'margin-left': (galleryPhotoSlider.$('.js-sliderInner').width() - galleryPhotoSlider.slideWidth) / 2
+                });
+
+                galleryPhotoSlider.currentSlide = $currentTarget.attr('href');
+                galleryPhotoSlider.setActiveSlide($currentTarget.attr('href'));
+            });
+        },
         initialize: function() {
             this.collection.on('reset', function() {
                 this.render();
@@ -748,7 +801,7 @@ $(function() {
             });
 
             // Color box
-            this.colorbox('.js-galleryPopup', false, '70%', '70%', '', '');
+            // this.colorbox('.js-galleryPopup', false, '70%', '70%', '', '');
             this.colorbox('.js-showPhotoPopup a', false, '70%', '70%', '', '');
             this.colorbox('.gallery-icon a', false, '70%', '70%', '', '');
 
@@ -904,16 +957,15 @@ $(function() {
      *
      ******************/
 
-    App.Collections.ShowPhotos = Backbone.Collection.extend({});
-
     App.Collections.Gallery = Backbone.Collection.extend({
         url: $('#galleryItemTemplate').data('url'),
         parse: function(response) {
             var galleryContent = response.page.content,
                 $galleryContent = $(galleryContent);
             var attachments = response.page.attachments,
-                galleryItems = _.map($galleryContent.find('a'), function(item) {
+                galleryItems = _.map($galleryContent.find('a'), function(item, i) {
                     return {
+                        id: i,
                         thumb: $(item).find('img').attr('src'),
                         img: $(item).attr('href')
                     };
@@ -963,15 +1015,15 @@ $(function() {
         newsCollection = new App.Collections.News();
 
     var appView = new App.Views.App(),
-        videoSliderView = new App.Views.Slider(),
-        photoSliderView = new App.Views.Slider({
-            el: '.js-photoSlider'
-        }),
         tabsView = new App.Views.Tabs(),
         accordionView = new App.Views.Accordion(),
         galleryView = new App.Views.Gallery({
             collection: galleryCollection
         }),
+        gallerySliderView = new App.Views.GallerySlider({
+            collection: galleryCollection
+        }),
+        galleryPhotoSlider = new App.Views.Slider(),
         newsView = new App.Views.News({
             collection: newsCollection
         }),
