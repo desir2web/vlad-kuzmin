@@ -486,7 +486,7 @@ $(function() {
             galleryView.colorbox('.gallery-icon a', false, '70%', '70%', '', '');
 
             // Accordion reinit
-            appView.$('.js-accordionBtn').on('click', function(e) {
+            newsView.$('.js-accordionBtn').on('click', function(e) {
                 e.preventDefault();
                 accordionView.click(e);
             });
