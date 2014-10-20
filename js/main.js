@@ -98,6 +98,10 @@ $(function() {
                 });
             } else {
                 $currentTarget.addClass('active');
+                newsCollection.fetch({
+                    url: $currentTarget.data('url'),
+                    reset: true
+                });
             }
         },
         setPointer: function(e) {
