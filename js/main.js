@@ -964,6 +964,11 @@ $(function() {
             var id = this.getRouteId('home');
             this.setActiveFrame(id);
             appView.currentFrame = id;
+
+            // Replay logo animation
+            var $logoAnimation = appView.$('.js-logoAnimation'),
+                gifUrl = $logoAnimation.data('url');
+            $logoAnimation.attr('src', gifUrl);
         },
         resume: function() {
             var id = this.getRouteId('resume');

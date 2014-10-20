@@ -4,19 +4,19 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<title>
-    <?php
-        global $page, $paged;
+	<?php
+		global $page, $paged;
 
-        wp_title( '|', true, 'right' );
-        bloginfo( 'name' );
+		wp_title( '|', true, 'right' );
+		bloginfo( 'name' );
 
-        $site_description = get_bloginfo( 'description', 'display' );
-        if ( $site_description && ( is_home() || is_front_page() ) )
-            echo " | $site_description";
-        if ( $paged >= 2 || $page >= 2 )
-            echo ' | ' . sprintf( __( 'Page %s', 'twentyten' ), max( $paged, $page ) );
-    ?>
-    </title>
+		$site_description = get_bloginfo( 'description', 'display' );
+		if ( $site_description && ( is_home() || is_front_page() ) )
+			echo " | $site_description";
+		if ( $paged >= 2 || $page >= 2 )
+			echo ' | ' . sprintf( __( 'Page %s', 'twentyten' ), max( $paged, $page ) );
+	?>
+	</title>
 	<script data-pace-options='{ "ajax": false, "document": true, "elements": ["img"] }' src="<?php bloginfo('template_url'); ?>/js/pace.min.js"></script>
 	<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/pace-theme-minimal.css">
 	<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/perfect-scrollbar.min.css">
@@ -51,6 +51,11 @@
 					'transform': 'translate3d(0,100%,0)',
 					'-webkit-transform': 'translate3d(0,100%,0)'
 				});
+
+				// Replay logo animation
+				var $logoAnimation = $('.js-logoAnimation'),
+					gifUrl = $logoAnimation.data('url');
+					$logoAnimation.attr('src', gifUrl);
 			};
 
 			setTimeout(function() {
@@ -101,7 +106,7 @@
 	<?php include "partials/show-photo-slider.php"; ?>
 
 	<script src="<?php bloginfo('template_url'); ?>/vendors/plugins.min.js"></script>
-    <script src="<?php bloginfo('template_url'); ?>/js/main.js"></script>
+	<script src="<?php bloginfo('template_url'); ?>/js/main.js"></script>
 
 <?php wp_footer(); ?>
 </body>
