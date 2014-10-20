@@ -473,6 +473,14 @@ $(function() {
         template: $('#newsItemTemplate').html(),
         tagName: 'li',
         className: 'news__item wow rollIn',
+        events: {
+            'click': 'openNews'
+        },
+        openNews: function(e) {
+            var $currentTarget = $(e.currentTarget),
+                newsContent = $currentTarget.find('.js-newsText').data('content');
+            var $newsContent = $('.js-newsPage').html($(newsContent).addClass('wow rotateInUpLeft'));
+        },
         initialize: function() {
             this.render();
         },
@@ -848,8 +856,6 @@ $(function() {
             });
 
             // Color box
-            // this.colorbox('.js-galleryPopup', false, '70%', '70%', '', '');
-            // this.colorbox('.js-showPhotoPopup a', false, '70%', '70%', '', '');
             this.colorbox('.gallery-icon a', false, '70%', '70%', '', '');
 
             this.colorbox('.js-showreelVideoPopup a', true, 768, 480, 768, 768);

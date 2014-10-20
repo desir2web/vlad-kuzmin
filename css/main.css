@@ -3446,11 +3446,25 @@ textarea:focus {
 .news__list:after {
   clear: both;
 }
+.news__list p {
+  margin: 0;
+  color: #fff;
+}
 .news__item {
   float: left;
   width: 440px;
   margin-bottom: 50px;
   position: relative;
+  cursor: pointer;
+}
+.news__item:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
 }
 .news__item .icon {
   width: 80px;

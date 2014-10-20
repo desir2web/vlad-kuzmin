@@ -16,7 +16,7 @@
 	</div>
 
 	<script type="text/mustache" id="newsItemTemplate" data-url="<?php bloginfo('wpurl'); ?>">
-		<div class="news__date">
+		<div class="news__date js-newsDate">
 			{{#important}}
 				<img src="<?php bloginfo('template_url'); ?>/img/red-date.svg" alt="" class="news__red-date">
 			{{/important}}
@@ -30,7 +30,7 @@
 			<tbody>
 				<tr>
 					<td>
-						<p class="news__text">
+						<p class="news__text js-newsText" data-content="{{content}}">
 							{{title_plain}}
 						</p>
 					</td>
