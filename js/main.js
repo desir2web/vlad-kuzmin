@@ -636,7 +636,6 @@ $(function() {
 
     // Photo slider
     App.Views.Slider = Backbone.View.extend({
-        el: '.js-photoSlider',
         events: {
             'click .js-slideLeft': 'prevSlide',
             'click .js-slideRight': 'nextSlide',
@@ -747,7 +746,7 @@ $(function() {
         openGallerySlider: function(e) {
             e.preventDefault();
             var $currentTarget = $(e.currentTarget);
-            appView.$('.js-photoSlider').fadeIn('fast', function() {
+            appView.$('.js-galleryPhotoSlider').fadeIn('fast', function() {
                 galleryPhotoSlider.$('.js-sliderContainer').css({
                     'margin-left': (galleryPhotoSlider.$('.js-sliderInner').width() - galleryPhotoSlider.slideWidth) / 2
                 });
@@ -841,7 +840,7 @@ $(function() {
 
             // Color box
             // this.colorbox('.js-galleryPopup', false, '70%', '70%', '', '');
-            this.colorbox('.js-showPhotoPopup a', false, '70%', '70%', '', '');
+            // this.colorbox('.js-showPhotoPopup a', false, '70%', '70%', '', '');
             this.colorbox('.gallery-icon a', false, '70%', '70%', '', '');
 
             this.colorbox('.js-showreelVideoPopup a', true, 768, 480, 768, 768);
@@ -1062,7 +1061,9 @@ $(function() {
         gallerySliderView = new App.Views.GallerySlider({
             collection: galleryCollection
         }),
-        galleryPhotoSlider = new App.Views.Slider(),
+        galleryPhotoSlider = new App.Views.Slider({
+            el: '.js-galleryPhotoSlider'
+        }),
         newsView = new App.Views.News({
             collection: newsCollection
         }),

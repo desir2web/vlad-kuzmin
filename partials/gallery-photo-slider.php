@@ -1,4 +1,4 @@
-<div class="slider slider_photo js-photoSlider">
+<div class="slider slider_photo js-galleryPhotoSlider">
 	<!-- Overlay -->
 	<div class="slider__overlay js-closeBtn"></div>
 	<!-- Arrows -->
