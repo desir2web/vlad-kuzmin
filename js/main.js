@@ -645,6 +645,19 @@ $(function() {
         slidesCount: 0,
         slideWidth: 0,
         currentSlide: 0,
+        arrowSlide: function(e) {
+            switch (e.keyCode) {
+                case 37:
+                    this.$('.js-slideLeft').trigger('click');
+                    break;
+                case 39:
+                    this.$('.js-slideRight').trigger('click');
+                    break;
+                case 27:
+                    this.close();
+                    break;
+            }
+        },
         escape: function(e) {
             if (e.keyCode === 27) {
                 this.close();
@@ -652,6 +665,15 @@ $(function() {
         },
         close: function() {
             this.$el.fadeOut('fast');
+            $('body').on('keyup', function(e) {
+                appView.arrowSlide(e);
+            });
+        },
+        open1: function() {
+            var self = this;
+            $('body').on('keyup', function(e) {
+                self.arrowSlide(e);
+            });
         },
         initialize: function() {
             var self = this;
@@ -678,6 +700,17 @@ $(function() {
             this.$('.js-sliderContainer').animate({
                 'left': -slide * this.slideWidth
             }, appView.animationSpeed);
+
+            this.$('.js-slideArrow').show();
+
+            if (parseInt(slide, 10) === 0) {
+                this.$('.js-slideLeft').hide();
+            } else if (parseInt(slide, 10) === this.slidesCount - 1) {
+                this.$('.js-slideRight').hide();
+            } else {
+                this.$('.js-slideArrow').show();
+            }
+
         },
         prevSlide: function(e) {
             var self = this;
@@ -721,6 +754,12 @@ $(function() {
 
                 galleryPhotoSlider.currentSlide = $currentTarget.attr('href');
                 galleryPhotoSlider.setActiveSlide($currentTarget.attr('href'));
+
+                $('body').off('keyup');
+
+                $('body').on('keyup', function(e) {
+                    galleryPhotoSlider.arrowSlide(e);
+                });
             });
         },
         initialize: function() {
