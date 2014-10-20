@@ -1,6 +1,9 @@
 <section class="section section_home js-section" data-frame="home">
 	<div class="container container_logo">
-		<img src="<?php bloginfo('template_url'); ?>/img/logo.png" alt="logo" data-wow-delay="0.5s" class="wow fadeIn icon icon-logo js-logo">
+		<div data-wow-delay="0.5s" class="wow fadeIn icon icon-logo js-logo">
+            <img src="<?php bloginfo('template_url'); ?>/img/logo.png" alt="logo">
+            <img src="<?php bloginfo('template_url'); ?>/img/logo.gif" alt="logo">
+        </div>
 		<div class="links">
 			<table class="links__list">
 				<tbody>
