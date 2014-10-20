@@ -3448,6 +3448,20 @@ textarea:focus {
 }
 .news__list p {
   margin: 0;
+  margin-bottom: 20px;
+  color: #fff;
+}
+.news__list .gallery-item {
+  float: left;
+  margin: 0;
+  margin-right: 20px;
+}
+.news__list .gallery-item img {
+  width: 150px;
+  height: 150px;
+  float: left;
+}
+.news__list .accordion__content {
   color: #fff;
 }
 .news__item {

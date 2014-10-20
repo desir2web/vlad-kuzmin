@@ -480,6 +480,16 @@ $(function() {
             var $currentTarget = $(e.currentTarget),
                 newsContent = $currentTarget.find('.js-newsText').data('content');
             var $newsContent = $('.js-newsPage').html($(newsContent).addClass('wow rotateInUpLeft'));
+
+            // Colorbox reinit
+            appView.$('.js-newsPage').find('a').attr('rel', 'news-gallery-' + this.model.get('date'));
+            galleryView.colorbox('.gallery-icon a', false, '70%', '70%', '', '');
+
+            // Accordion reinit
+            appView.$('.js-accordionBtn').on('click', function(e) {
+                e.preventDefault();
+                accordionView.click(e);
+            });
         },
         initialize: function() {
             this.render();
