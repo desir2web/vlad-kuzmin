@@ -3300,6 +3300,15 @@ textarea:focus {
 .slider_photo .slider__img {
   width: 100%;
 }
+.slider_photo .arrow {
+  width: 50%;
+}
+.slider_photo .arrow_left {
+  text-align: left;
+}
+.slider_photo .arrow_right {
+  text-align: right;
+}
 .contacts {
   display: inline-block;
   position: absolute;
@@ -3952,7 +3961,7 @@ textarea:focus {
           animation-play-state: paused;
 }
 @media (max-width: 1200px) {
-  .arrow {
-    display: none;
+  .arrow .icon {
+    display: none !important;
   }
 }
