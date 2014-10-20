@@ -12,7 +12,7 @@ Data to perform:
 1. Home -> Post -> title(show-programm)
 1. Home -> Post -> title(dance-school)
 2. Resume -> Page -> slug(resume)
-3. Show programm (photo) -> Page -> slug(show-photo)
+3. Show programm (photo) -> Page -> slug(show-gallery)
 3. Show programm (video) -> Page -> slug(show-video)
 4. School -> Post -> category(school)
 5. Gallery -> Page -> slug(gallery) {insert gallery}
