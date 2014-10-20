@@ -46,6 +46,16 @@
 			</table>
 		</div>
 	</div>
+	<!-- Gallery item template -->
+	<script type="text/mustache" id="showGalleryItemTemplate" data-url="<?php bloginfo('wpurl'); ?>/?json=get_page&slug=show-gallery">
+		<a href="{{id}}" class="gallery__link js-galleryPopup" rel="gallery">
+			<span class="gallery__icon">
+				<div class="sprite icon icon-zoom-in"></div>
+			</span>
+			<div class="gallery__img" style="background: url({{{thumb}}}) 50% center no-repeat; background-size: cover;"></div>
+		</a>
+	</script>
+
 	<!-- Show photos -->
 	<div class="js-showPhotoPopup hide">
 		<?php

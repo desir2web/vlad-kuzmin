@@ -98,6 +98,7 @@
 	</div>
 	<?php //include "partials/video-slider.php"; ?>
 	<?php include "partials/gallery-photo-slider.php"; ?>
+	<?php include "partials/show-photo-slider.php"; ?>
 
 	<script src="<?php bloginfo('template_url'); ?>/vendors/plugins.min.js"></script>
     <script src="<?php bloginfo('template_url'); ?>/js/main.js"></script>

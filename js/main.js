@@ -421,9 +421,24 @@ $(function() {
         showVideoSlider: function() {
             this.$('.js-showVideoPopup a').eq(0).trigger('click');
         },
-        showPhotoSlider: function() {
-            this.$('.js-showPhotoPopup a').eq(0).trigger('click');
-        }
+        showPhotoSlider: function(e) {
+            e.preventDefault();
+            var $currentTarget = $(e.currentTarget);
+            appView.$('.js-showPhotoSlider').fadeIn('fast', function() {
+                showPhotoSlider.$('.js-sliderContainer').css({
+                    'margin-left': (showPhotoSlider.$('.js-sliderInner').width() - showPhotoSlider.slideWidth) / 2
+                });
+
+                showPhotoSlider.currentSlide = 0;
+                showPhotoSlider.setActiveSlide(0);
+
+                $('body').off('keyup');
+
+                $('body').on('keyup', function(e) {
+                    showPhotoSlider.arrowSlide(e);
+                });
+            });
+        },
     });
 
     // News view
@@ -604,7 +619,7 @@ $(function() {
 
     // Gallery slider
     App.Views.GallerySlider = Backbone.View.extend({
-        el: '.js-sliderContainer',
+        // el: '.js-sliderContainer',
         initialize: function() {
             this.collection.on('reset', function() {
                 this.render();
@@ -668,17 +683,11 @@ $(function() {
                 appView.arrowSlide(e);
             });
         },
-        open1: function() {
-            var self = this;
-            $('body').on('keyup', function(e) {
-                self.arrowSlide(e);
-            });
-        },
         initialize: function() {
             var self = this;
 
-            galleryCollection.on('reset', function() {
-                this.slidesCount = galleryCollection.models.length;
+            this.collection.on('reset', function() {
+                this.slidesCount = this.collection.models.length;
                 this.slideWidth = this.$('.js-sliderItem').width();
                 this.$('.js-slideLeft').hide();
 
@@ -1017,6 +1026,28 @@ $(function() {
             });
         }
     });
+    App.Collections.ShowGallery = Backbone.Collection.extend({
+        url: $('#showGalleryItemTemplate').data('url'),
+        parse: function(response) {
+            var galleryContent = response.page.content,
+                $galleryContent = $(galleryContent);
+            var attachments = response.page.attachments,
+                galleryItems = _.map($galleryContent.find('a'), function(item, i) {
+                    return {
+                        id: i,
+                        thumb: $(item).find('img').attr('src'),
+                        img: $(item).attr('href')
+                    };
+                });
+            return galleryItems;
+
+        },
+        initialize: function() {
+            this.fetch({
+                reset: true
+            });
+        }
+    });
     App.Collections.NewsArchive = Backbone.Collection.extend({
         parse: function(response) {
             return _.map(response.permalinks, function(item) {
@@ -1049,6 +1080,7 @@ $(function() {
      ******************/
 
     var galleryCollection = new App.Collections.Gallery(),
+        showGalleryCollection = new App.Collections.ShowGallery(),
         newsArchiveCollection = new App.Collections.NewsArchive(),
         newsCollection = new App.Collections.News();
 
@@ -1059,10 +1091,20 @@ $(function() {
             collection: galleryCollection
         }),
         gallerySliderView = new App.Views.GallerySlider({
+            el: '.js-galleryPhotoSlider .js-sliderContainer',
             collection: galleryCollection
         }),
+        showSliderView = new App.Views.GallerySlider({
+            el: '.js-showPhotoSlider .js-sliderContainer',
+            collection: showGalleryCollection
+        }),
         galleryPhotoSlider = new App.Views.Slider({
-            el: '.js-galleryPhotoSlider'
+            el: '.js-galleryPhotoSlider',
+            collection: galleryCollection
+        }),
+        showPhotoSlider = new App.Views.Slider({
+            el: '.js-showPhotoSlider',
+            collection: showGalleryCollection
         }),
         newsView = new App.Views.News({
             collection: newsCollection
