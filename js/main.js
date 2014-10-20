@@ -915,8 +915,16 @@ $(function() {
         },
         activeFrame: 0,
         isActiveMenuItemSet: false,
+        initialize: function() {
+            this.on('route', function() {
+                setTimeout(function() {
+                    console.log($('.animated'));
+                    $('.animated').removeClass('animated');
+                }, 5000);
+            });
+        },
         resetWow: function() {
-            $('.animated').removeClass('animated');
+            appView.$('.animated').removeClass('animated');
             new WOW().init();
         },
         setActiveFrame: function(frame) {
