@@ -1,8 +1,9 @@
 <section class="section section_contacts js-section" data-frame="contacts">
+	<div class="js-hoverOverlayContacts hover-overlay"></div>
 	<div class="container js-container">
 		<div class="contacts">
 			<p class="contacts__text wow bounceInDown" data-wow-delay="0.3s" data-wow-duration="1.5s">
-				По вопросам сотрудничества,<br>организации и проведения мастер классов:
+				По вопросам сотрудничества:
 			</p>
 			<div class="contacts__container">
 				<div class="contacts__phone wow bounceInLeft" data-wow-delay="0.6s">

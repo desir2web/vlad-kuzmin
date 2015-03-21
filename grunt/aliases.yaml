@@ -1,4 +1,6 @@
 default:
+  - 'browserSync'
+  - 'concat_sourcemap'
   - 'less'
   - 'autoprefixer'
   - 'watch'

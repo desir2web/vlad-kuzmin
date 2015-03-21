@@ -89,7 +89,7 @@
 	<div class="wrapper js-frame">
 		<?php include "partials/header.php"; ?>
 		<?php include "partials/arrows.php"; ?>
-		<main class="main-content js-framesContainer">
+		<main class="main-content js-framesContainer" data-theme-url="<?php bloginfo('template_url'); ?>">
 			<div class="color-overlay js-colorOverlay"></div>
 			<?php include "partials/home.php"; ?>
 			<?php include "partials/resume.php"; ?>
@@ -106,7 +106,8 @@
 	<?php include "partials/show-photo-slider.php"; ?>
 
 	<script src="<?php bloginfo('template_url'); ?>/vendors/plugins.min.js"></script>
-	<script src="<?php bloginfo('template_url'); ?>/js/main.js"></script>
+	<!--<script src="<?php bloginfo('template_url'); ?>/js/main.js"></script>-->
+	<script src="<?php bloginfo('template_url'); ?>/js/app.js"></script>
 
 <?php wp_footer(); ?>
 </body>

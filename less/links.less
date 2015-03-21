@@ -3,7 +3,7 @@
 	width: 730px;
 	margin: 0 auto;
 	margin-top: 40px;
-	z-index: 5;
+	z-index: 15;
 	&_show {
 		position: absolute;
 		width: 100%;
@@ -18,15 +18,9 @@
 			width: 50%;
 			&:nth-child(1) {
 				text-align: left;
-				.links__item-inner {
-					// margin-right: 100px;
-				}
 			}
 			&:nth-child(2) {
 				text-align: right;
-				.links__item-inner {
-					// margin-left: 100px;
-				}
 			}
 		}
 		.links__item-inner {
@@ -53,6 +47,9 @@
 	}
 	&__list {
 		width: 100%;
+		list-style: none;
+		padding: 0;
+		margin: 0;
 		.clearfix();
 	}
 	&__item {
@@ -84,6 +81,7 @@
 	&__item-inner {
 		display: inline-block;
 		cursor: pointer;
+		transition: opacity .5s;
 		&:hover {
 			.links__icon {
 				&:before {

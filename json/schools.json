@@ -1,0 +1,20 @@
+{
+	"id": 1,
+	"schedule": {},
+	"teachers": [{
+		"id": 1,
+		"name": "Ник Гейб",
+		"photo": "http://lorempixel.com/300/300/people?id=1",
+		"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, non!"
+	}, {
+		"id": 2,
+		"name": "Марк Дазвил",
+		"photo": "http://lorempixel.com/300/300/people?id=2",
+		"description": "Lorem ipsum dolor sit."
+	}],
+	"photo": [{
+
+	}],
+	"video": [],
+	"news": []
+}

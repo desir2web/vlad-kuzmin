@@ -14,13 +14,14 @@
 		display: inline-block;
 		position: relative;
 		padding: 0 7px;
-		transition: margin .2s;
+		transition: transform .2s, opacity .5s;
 		.icon {
 			width: 30px;
 			height: 30px;
 		}
 		&:hover {
-			margin-top: -5px;
+			// margin-top: -5px;
+			transform: translateY(-5px);
 		}
 		&:before {
 			content: '';

@@ -1,7 +1,8 @@
 <section class="section section_show js-section" data-frame="show">
+	<div class="js-hoverOverlayShow hover-overlay"></div>
 	<div class="container js-container">
 		<div class="vlad wow vladInUp" data-wow-duration="0.5s" data-wow-delay="0.5s">
-			<ul class="vlad__list">
+			<ul class="vlad__list js-vlad">
 				<li class="vlad__item vlad__item_left wow vladInLeft" data-wow-duration="0.5s" data-wow-delay="0.8s">
 					<img src="<?php bloginfo('template_url'); ?>/img/vlad_left.png" alt="" class="vlad__img">
 				</li>
@@ -18,7 +19,7 @@
 				<tbody>
 					<tr>
 						<td class="links__item wow bounceInLeft" data-wow-delay="1.1s" data-wow-duration="1.5s">
-							<div class="links__item-inner js-showPhotoSliderBtn">
+							<div class="links__item-inner js-hoverBtn js-showPhotoSliderBtn">
 								<div class="links__icon">
 									<div class="sprite icon icon-photo"></div>
 								</div>
@@ -30,7 +31,7 @@
 							</div>
 						</td>
 						<td class="links__item wow bounceInRight" data-wow-delay="1.6s" data-wow-duration="1.5s">
-							<div class="links__item-inner js-showVideoSliderBtn">
+							<div class="links__item-inner js-hoverBtn js-showVideoSliderBtn">
 								<div class="links__icon">
 									<div class="sprite icon icon-video"></div>
 								</div>

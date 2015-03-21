@@ -1,4 +1,5 @@
 <section class="section section_gallery js-section" data-frame="gallery">
+	<div class="js-hoverOverlayGallery hover-overlay"></div>
 	<div class="container js-container">
 		<div class="gallery js-gallery">
 			<div class="gallery__inner js-galleryContainer js-scroll">

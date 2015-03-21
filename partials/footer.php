@@ -8,28 +8,28 @@
 				<div class="socials">
 					<ul class="socials__list">
 						<li class="socials__item">
-							<a href="#" class="socials__link">
+							<a href="#" class="socials__link js-hoverBtn">
 								<svg viewBox="0 0 29.806 29.925" class="icon icon-facebook">
 									<use xlink:href="#facebook"></use>
 								</svg>
 							</a>
 						</li>
 						<li class="socials__item">
-							<a href="#" class="socials__link">
+							<a href="#" class="socials__link js-hoverBtn">
 								<svg viewBox="0 0 29.806 29.925" class="icon icon-vk">
 									<use xlink:href="#vk"></use>
 								</svg>
 							</a>
 						</li>
 						<li class="socials__item">
-							<a href="#" class="socials__link">
+							<a href="#" class="socials__link js-hoverBtn">
 								<svg viewBox="0 0 29.806 29.925" class="icon icon-twitter">
 									<use xlink:href="#twitter"></use>
 								</svg>
 							</a>
 						</li>
 						<li class="socials__item">
-							<a href="#" class="socials__link">
+							<a href="#" class="socials__link js-hoverBtn">
 								<svg viewBox="0 0 29.806 29.925" class="icon icon-instagram">
 									<use xlink:href="#instagram"></use>
 								</svg>

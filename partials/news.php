@@ -1,4 +1,5 @@
 <section class="section section_news js-section" data-frame="news">
+	<div class="js-hoverOverlayNews hover-overlay"></div>
 	<div class="container js-container js-newsView">
 		<div class="news js-news">
 			<div class="news__frame js-newsFrame">
@@ -8,7 +9,12 @@
 			</div>
 		</div>
 
-		<div class="btn btn_bottom js-showNewsArchiveBtn" data-url="<?php bloginfo('wpurl'); ?>">
+		<div class="btn btn_bottom btn_back js-recentNewsBtn" data-url="<?php bloginfo('wpurl'); ?>/?json=get_posts&category_name=news">
+			<span class="btn__text">
+				Назад
+			</span>
+		</div>
+		<div class="btn btn_bottom btn_archive js-showNewsArchiveBtn" data-url="<?php bloginfo('wpurl'); ?>">
 			<span class="btn__text">
 				Архив
 			</span>

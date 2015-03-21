@@ -1,4 +1,5 @@
 <section class="section section_resume js-section" data-frame="resume">
+    <div class="js-hoverOverlayResume hover-overlay"></div>
 	<div class="container js-container">
 		<article class="article js-article js-scroll">
             <?php

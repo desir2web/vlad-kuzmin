@@ -16,6 +16,11 @@ body {
 	overflow: hidden;
 }
 
+.disable-hover,
+.disable-hover * {
+  pointer-events: none !important;
+}
+
 a, input, button, select, textarea {
 	&:focus {
 		outline: 0 !important;
@@ -53,7 +58,7 @@ a, input, button, select, textarea {
 	width: 940px;
 	margin: 0 auto;
 	position: relative;
-	z-index: 5;
+	z-index: 15;
 	&_logo {
 		width: 750px;
 		height: 400px;
